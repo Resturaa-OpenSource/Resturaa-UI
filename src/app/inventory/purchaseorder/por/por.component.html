@@ -1,0 +1,32 @@
+<div class="pb-3" *ngIf="!porchild" @fadeout>
+ <div class="sticky-top">
+    <h6 class="py-4 mb-0  bglight">Purchase Order Receiving</h6>
+</div>
+    <div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Purchase Order Receiving</th>
+                        <th>Date</th>
+                        <th>Total Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click)="openpor(item);" class="cpointer" *ngFor="let item of por">
+                        <td>{{item.id}}</td>
+                        <td>{{item.orederName}}</td>
+                        <td>{{item.date | date:'dd/MM/yyyy'}}</td>
+                        <td>{{item.totalAmount}}</td>
+                        <td>{{item.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="porchild" @fadeout>
+<app-porchild [purchaseOder] = "purchaseOder" (porchange)="openpor();"></app-porchild>
+</div>

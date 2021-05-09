@@ -1,0 +1,119 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight py-3 h-100 overflow-auto d-flex align-items-center">
+            <div @fade class="w-100">
+                <div class="mt-4">
+                    <div>
+                        <div class="form-group">
+                            <div class=" ">
+                                <input type="file" class="bgprimary  btnfile btn-block  filebtn py-2 pl-2"
+                                    (change)="fileChangeEvent($event)" />
+                            </div>
+
+                            <div class="card-deck my-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <img [src]="croppedImage" class="img-fluid" />
+                                    </div>
+                                </div>
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <image-cropper class="img-fluid" [imageChangedEvent]="imageChangedEvent"
+                                            [maintainAspectRatio]="false" [resizeToWidth]="0" format="png"
+                                            (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                                            (loadImageFailed)="loadImageFailed()"></image-cropper>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="" id="" cols="30" rows="5" class="form-control inpround"
+                                [(ngModel)]="bill.message" placeholder="ADDITIONAL MESSAGE"></textarea>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn bgprimary btnbg px-5 text-white"
+                                (click)="uploadimg()">Print</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-5 h-100 overflow-auto pb-3 pt-2 w-100 d-flex align-items-center">
+            <div @fadeout class="boxshadow p-3 m-auto">
+                <div class="text-center pb-1">
+                    <div class="m-auto imgcirclea">
+                        <img [src]="croppedImage" alt="" class="rounded-circle img-fluid imgcircle" width="60" height="60">
+                    </div>
+                    <h2 class="my-3">COMPANY NAME</h2>
+                    <hr>
+                </div>
+
+                <div>
+                    <h2>CONTACT INFO:</h2>
+                    <div>
+                        <p class="mb-0"><span class="font-weight-bold">Address :</span> {{store.storeAddress1}},
+                            {{store.storeAddress2}}
+                        </p>
+                        <p class="mb-0"><span class="font-weight-bold">Email :</span> {{store.email}}</p>
+                        <!-- <p class="mb-0"><span class="font-weight-bold">Phone :</span> {{store.}}</p> -->
+                    </div>
+                </div>
+                <div class="table-responsive my-3 w-100">
+                    <table class="table tableres">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>ItemName</th>
+                                <th>ItemCode</th>
+                                <th>Qty</th>
+                                <th>Sub Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John doe</td>
+                                <td> AAB</td>
+                                <td>2</td>
+                                <td>aaaa</td>
+                            </tr>
+                            <tr>
+                                <td>John doe</td>
+                                <td> AAB</td>
+                                <td>2</td>
+                                <td>aaaa</td>
+                            </tr>
+                        </tbody>
+                        <thead class="thead-light">
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Tax</th>
+                                <th>0000</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Total</th>
+                                <th>00000</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+
+                <div>
+                    <p class="fonth6 mb-0">
+                        <strong>Thank you for your bussiness!</strong>
+                    </p>
+                    <p class="mb-0 fonth6">
+                        {{bill?.message}}
+                    </p>
+                </div>
+                <hr class="mb-0 mt-2">
+            </div>
+
+        </div>
+    </div>
+</div>

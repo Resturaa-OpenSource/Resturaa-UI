@@ -1,0 +1,15 @@
+{
+    "/api/*": {
+        
+        "target": "http://ec2-13-234-20-113.ap-south-1.compute.amazonaws.com:8082/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+    },
+    "/auri/*":{
+        "target": "http://ec2-13-234-20-113.ap-south-1.compute.amazonaws.com:8082/",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "debug"
+      }
+}

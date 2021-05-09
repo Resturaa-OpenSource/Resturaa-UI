@@ -1,0 +1,168 @@
+@media(min-width:768px){
+    .h-80{
+        height: 86.6%;
+        // overflow-y: auto;
+        }
+}
+.h-80{
+    height: auto;
+}
+.inpround{
+    border-radius: 30px;
+}
+.btnround{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(241, 225, 225);
+}
+.cardbdr{
+    border-radius: 10px;
+}
+.cardbody{
+    padding: 0.85rem ;
+}
+// .card-img-top{
+//     width: 150px !important;
+//     height: 100px !important;
+// }
+.text50{
+    font-size: 8px;
+}
+.pinkcolor{
+    color: deeppink;
+}
+.pink{
+    background-color: rgb(245, 140, 196);
+}
+@media(min-width:768px){
+    .h30{
+        height: 11.2%;
+    }
+    .h70{
+        height: 84.8%;
+        overflow-y: auto;
+        overflow-x:hidden; 
+        
+    }
+}
+
+
+.fontp{
+    font-size: 8px;
+}
+.fonth6{
+    font-size: 10px;
+}
+@media(min-width:1030px){
+    .fontp{
+        font-size: 12px;
+    }
+    .fonth6{
+        font-size: 14px;
+    }
+}
+@media(min-width:1000px){
+    .fonth{
+        font-size:10px;
+    }  
+}
+@media(min-width:1200px){
+.fonth{
+    font-size:12px;
+}
+}
+
+
+
+.bgbradius{
+    border-radius: 12px;
+}
+.textcolor{
+    color: darkorchid;
+}
+// .rounddiv{
+//     width: 25px;
+//     height: 25px;
+//     border-radius: 50%;
+//     background-color: #fff;
+// }
+// .bgbdradius{
+//     border-radius: 26px;
+// }
+// .input-group-text{
+//     border-radius: 50%;
+    
+// }
+// .bgight{
+//     background-color: #ececec;
+// }
+// input[type=number]::-webkit-inner-spin-button,
+// input[type=number]::-webkit-outer-spin-button {
+//     -webkit-appearance: none;
+//     margin: 0;
+// }
+.table td,.table th{
+    border-bottom: 1px solid #dee2e6;
+    border-top:none;
+    padding: .3rem;
+}
+// @media only screen and (min-width:1200px){
+//     .h8{
+//         height: 6.5%;
+//     }
+//     .h67{
+//         height: 40%;
+//         overflow-y:auto; 
+//         overflow-x: hidden;
+//     }
+//     .h25{
+//         height: 30.5%;
+//     }
+//     }
+// @media only screen and (min-width:768px){
+//     .h8{
+//         height: 6.5%;
+//     }
+//     .h67{
+//         height: 19% !important;
+//         overflow-y:auto; 
+//         overflow-x: hidden;
+//     }
+//     .h25{
+//         height: 25%;
+//     }
+//     }
+
+.pop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    overflow-y: auto;
+}
+.bgtlight{
+    background-color: rgba(0,0,0,.5);
+}
+.input-group-text{
+    border-radius: 50%;
+    
+}
+.cardhead{
+    background-color: transparent;
+}
+.cardbody{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+            align-items: flex-end;
+}
+.img50{
+    width: 50px;
+    height: 50px;
+}
+

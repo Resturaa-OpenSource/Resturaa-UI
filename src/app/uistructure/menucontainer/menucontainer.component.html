@@ -1,0 +1,40 @@
+<div class="h-100 ">
+<div class="container-fluid px-0  h-100 overflowy-auto">
+  <div class="row bgcolor  border-bottom sticky-top mb-2">
+    <div class="col-3 p-1  my-1 icontext d-flex justify-content-center align-items-center " [ngStyle]="title === 'Pos' && {'background-color':'#a787bd'}">
+      <button class="btn btnp text-center h-100 w-100 bgbtn" (click)="pos('Pos');" [routerLink]="['/module/pos']" routerLinkActive="router-link-active" >
+            <img src="../../../assets/menu/icons8-cash-register-96.png" alt="" class="img-fluid">
+            <p class="mb-2">Pos</p>        
+    </button>
+    </div>
+    <div class="col-3 p-1  my-1 icontext d-flex justify-content-center align-items-center" [ngStyle]="title === 'Inventory' && {'background-color':'#a787bd'}">
+      <button class="btn btnp text-center bgbtn w-100 h-100" (click)="inventory('Inventory');" [routerLink]="['/module/inventory']">
+        <img src="../../../assets/menu/icons8-trolley-96.png" alt="" class="img-fluid ">
+        <p class="mb-2">Inventory</p>
+      </button>
+    </div>
+    <div class="col-3 p-1  my-1 icontext d-flex justify-content-center align-items-center" [ngStyle]="title === 'Kitchen' && {'background-color':'#a787bd'}">
+      <button class="btn btnp text-center bgbtn h-100 w-100" (click)="kitchen('Kitchen');" [routerLink]="['/module/kitchen']">
+        <img src="../../../assets/menu/icons8-chef-hat-96.png" alt="" class="img-fluid">
+        <p class="mb-2">Kitchen</p>
+      </button>
+    </div>
+    <div class="col-3 p-1  my-1 d-flex icontext justify-content-center align-items-center" [ngStyle]="title === 'Stores' && {'background-color':'#a787bd'}">
+      <button class="btn btnp text-center bgbtn h-100 w-100" (click)="stores('Stores');" [routerLink]="['/module/stores']">
+        <img src="../../../assets/menu/icons8-shop-96.png" alt="" class="img-fluid">
+        <p class="mb-2">Stores </p>
+      </button>
+    </div>
+  </div>
+
+<div class="acolor">
+  <div>
+   <app-pos-submenu *ngIf="posf"></app-pos-submenu>
+   <app-inventory-menu *ngIf="inventoryf"></app-inventory-menu>
+   <app-store-submenu *ngIf="storesf"></app-store-submenu>
+   <app-kitchen-submenu *ngIf="kitchenf"></app-kitchen-submenu>
+<app-menuemptypage *ngIf="!posf && !inventoryf && !storesf && !kitchenf"></app-menuemptypage>
+  </div>
+</div>
+</div>
+</div>

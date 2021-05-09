@@ -1,0 +1,56 @@
+<div class="py-3">
+    <div class="mb-3">
+        <button class="btn bgprimary text-white btnbg" (click)="openpor();">Back</button>
+    </div>
+
+    <h6 class="mb-3">Purchase Order Receiving</h6>
+    <div class="form-group mb-2">
+            <label for="text">Purchase Order : &nbsp;
+                    {{purchaseOder?.orederName }}
+            </label>
+            
+        </div>
+        <div class="form-group mb-2">
+            <label for="date">Date Selector&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;
+                    {{purchaseOder?.date | date:'dd/MM/yyyy'}}
+            </label>
+            
+        </div>
+    <div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>CODE</th>
+                        <th>NAME</th>
+                        <th>SKU</th>
+                        <th>UNIT COST</th>
+                        <th>STORE IN QTY</th>
+                        <th>REQUIRED QTY</th>
+                        <th>RECEIVED IN QTY</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of purchaseOder.items">
+                        <td>{{item?.code}}</td>
+                        <td>{{item?.orederName}}</td>
+                        <td>{{item?.sku}}</td>
+                        <td>{{item?.unitPrice}}</td>
+                        <td>{{item?.storeQty}}</td>
+                        <td>{{item?.requiredQty}}</td>
+                       
+                        
+                        <td>
+                           
+                        
+                        <input type="number" [(ngModel)]="item.reciQty" class="inpround inpbdr">
+                    
+                        </td>
+                        <td><button class="btn btnbg bgprimary text-white" (click)="update()">apply</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<!-- The Modal -->
+<div class="modal fade" id="myModal1">
+    <div class="modal-dialog modal-xl modal-dialog-centered ">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header border-0 align-items-center">
+                <div>
+                    <h6 class="mb-0">ADD MORE PRODUCTS</h6>
+                </div>
+                <div>
+                    <button type="button"   class="close btn" data-dismiss="modal">
+
+                        <img src="assets/close_btn.png" alt="" class="img-fluid" width="40">
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body pt-0">
+                <div class="row">
+                    <div class="col-lg-7 bglight">
+                        <div class="pmodal">
+                            <div class="pdialog">
+                                <div class="pcontent">
+                                    <div class="pmodalbody">
+                                        <div class="container-fluid px-0">
+                                                <div class="row " *ngIf="table.length==0 ">
+                                                        <div class="py-3 w-25 h-100" *ngFor="let item of [1,2,3,4,5,6]">
+                                                            <ngx-content-loading [width]="" [height]="300">
+                                                                <!-- <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g> -->
+                                                                <svg:g ngx-rect width="300" height="300" y="10" x="70" rx="5" ry="5"></svg:g>
+                                                                <!-- <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g> -->
+                                                                <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                                                                <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                                            </ngx-content-loading>
+                                                        </div>
+                                                    </div>
+                                            <div class="row">
+                                                <div class=" col-xl-3 col-lg-4 col-md-6  px-2 col-6" *ngFor="let item of table">
+                                                    <div class="card border-0 shadow text-center cardbdr my-2" (click)="update(item)">
+                                                        <div class="card-body px-1 pt-1">
+                                                            <div class="d-flex justify-content-end">
+                                                                <button type="button" class=" btn p-1" (click)="remove(item)">
+                                                                    <img src="assets/close_btn.png" alt=""
+                                                                        class="img-fluid" width="30">
+                                                                </button>
+                                                            </div>
+                                                            <h6 class=" mb-0 fonth6">TABLE NUMBER</h6>
+                                                            <h6 class="">{{item.tableName}}</h6>
+                                                            <p class="mb-0 fonth6">Seats Available</p>
+                                                            <h6 class="mb-0 fonth6">{{item.seatCount}}</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- NGIF CREATE NEW TABLE STARTING -->
+                    <div class="col-lg-5 d-flex align-items-center" *ngIf="edit">
+
+                        <div class="">
+                            <h6 class="mb-4">CREATE NEW TABLE</h6>
+                            <div class="mb-4">
+                            <form (ngSubmit)="formRef.valid &&  editable(formRef.value)"
+                            #formRef="ngForm">
+                            <input type="text" hidden name="storeId"  ngModel >
+                            <input type="text" hidden name="seatOccupied"  ngModel >
+                            <input type="text" hidden name="tableId"  ngModel >
+                                <div class="form-group">
+                                      
+                                    <input type="text" placeholder="TABLE NUMBER" name="tableName" id=""
+                                      ngModel class="form-control shadow border-0 bglight inpround" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" placeholder="SEAT COUNT" name="seatCount" id=""ngModel
+                                        class="form-control shadow border-0 bglight inpround" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btnbg text-white bgprimary px-5">
+                                        Update
+                                    </button>
+                               </div>
+                            </form>
+                        </div>
+                            <div>
+                            <p class="mb-0 text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim voluptates illum similique debitis 
+                                sapiente dignissimos laboriosam quas nisi consectetur ducimus ea, dolorum fugit sunt! Quos repellat 
+                                nisi cum dolore tempore.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- ngif create new table ending  -->
+                    <!-- edit table starting -->
+                    <div class="col-lg-5 d-flex align-items-center" *ngIf="!edit">
+
+                        <div class="">
+                            <h6 class="mb-4">EDIT TABLE</h6>
+                            <div class="mb-4">
+                            <form action="">
+                                <div class="form-group">
+                                    <input type="number" placeholder="TABLE NUMBER" name="" id=""
+                                        class="form-control shadow border-0 bglight inpround">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" placeholder="SEAT COUNT" name="" id=""
+                                        class="form-control shadow border-0 bglight inpround">
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btnbg text-white bgprimary px-5">
+                                        Update
+                                    </button>
+                               </div>
+                            </form>
+                        </div>
+                            <div>
+                            <p class="mb-0 text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim voluptates illum similique debitis 
+                                sapiente dignissimos laboriosam quas nisi consectetur ducimus ea, dolorum fugit sunt! Quos repellat 
+                                nisi cum dolore tempore.
+                            </p>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- ngif edit table ending -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

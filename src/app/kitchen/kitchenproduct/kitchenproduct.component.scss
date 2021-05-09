@@ -1,0 +1,23 @@
+.btnbgc{
+    background-color: #dee2e6;
+}
+.cardbdr{
+    border-radius: 10px;
+}
+@media(max-width:768px){
+    .bleft{
+border-right:none !important;
+    }
+}
+.imground{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #ccc;
+    overflow: hidden;
+}
+.imgkitchen{
+    width: 120px;
+    height: 120px;
+    // object-fit: cover;
+}

@@ -1,0 +1,284 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div class="" @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row pt-3 bglight">
+                        <div class="col-8 pt-2">
+
+                            <div class="form-group">
+                                <input type="search" class="form-control border-0 shadow inpround" placeholder="Search"
+                                    [(ngModel)]="searchText">
+                            </div>
+
+
+                        </div>
+                        <div class="col-2">
+
+                            <button class="btn" (click)="tag()">
+                                <img src="assets/menu/icons8-price-tag-48.png" alt="" class="img-fluid">
+                            </button>
+
+
+
+                        </div>
+                        <div class="col-2">
+                            <button class="btn">
+                                <img src="assets/menu/icons8-real-food-for-meals-48.png" alt=""
+                                    (click)="allProducts();" class="img-fluid">
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="row bglight">
+                        <div class="pb-2 pl-3">
+                            <h6>SELECT PRODUCT</h6>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container-fluid px-2 ">
+                    <div class="row " *ngIf="products?.length==0 ">
+                        <div class="py-3 w-25 h-100" *ngFor="let item of [1,2,3,4,5,6]">
+                            <ngx-content-loading [width]="" [height]="300">
+                                <!-- <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g> -->
+                                <svg:g ngx-rect width="300" height="300" y="10" x="70" rx="5" ry="5"></svg:g>
+                                <!-- <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g> -->
+                                <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                                <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                            </ngx-content-loading>
+                        </div>
+                    </div>
+                    <div class="row " *ngIf="show">
+
+                        <div class="col-xl-3 col-lg-4 col-md-6 py-2 px-1"
+                            *ngFor="let item of products | filter :searchText">
+                            <a class="text-decoration-none apointer" (click)="toggleItem(item);">
+                                <div class="card border-0 shadow cardbdr h-100">
+                                    <img [src]="'/api/files/download/'+item?.image" alt=""
+                                        class="card-img-top img-fluid imgtop">
+                                    <div class="card-body cardbody p-0">
+                                        <div class="w-100">
+                                            <div class="text-center py-1">
+                                                <h6 class="fonth">{{item.productName}}</h6>
+                                                <!-- <h6 class="mb-0 fonth6">{{item.productID}}</h6> -->
+                                                <h6 class="text-success mb-0">₹{{item.productPrice}}</h6>
+
+                                            </div>
+                                            <div class="text-center pink py-1">
+                                                <p class="mb-0 fonth6">{{item?.offerName}} </p>
+                                            </div>
+                                            <!-- <div class="d-flex align-items-center">
+                                                <a class="pinkcolor">
+                                                    <div
+                                                        class="btnround text-center d-flex justify-content-center align-items-center shadow">
+                                                        <span class="pinkcolor">
+                                                            50%
+                                                            <p class="text50 mb-0">{{item.productID}}</p>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="row " *ngIf="!show">
+                        <div class=" col-xl-3 col-md-4  px-2 col-6 my-2 "
+                            *ngFor="let item of tags | filter :searchText">
+                            <div class="card border-0 shadow text-center cardbdr h-100 ">
+                                <div class="card-body d-flex justify-content-center align-items-center px-1"
+                                    (click)="tagSelected(item.tagID);">
+                                    <div class="">
+                                        <div class="mb-2">
+                                            <img [src]="'/api/files/download/'+item?.imageID" alt=""
+                                                class="img-fluid rounded-circle imgcircle" width="60">
+                                        </div>
+                                        <h6 class="mb-0 fonth6">{{item?.tagName}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5   px-0 wholemodal">
+            <div class="wmodal" @fadeout>
+                <div class="modalscroll modaldialog">
+                    <div class="modalcontent">
+                        <div class=" bg-white pt-2 modalheader" *ngIf="order?.orderNumber != 0">
+                            <div class="bgight bgbradius">
+                                <div class="row p-3  h8 ">
+                                    <div class="col-6">
+                                        <div class="row ">
+                                            <div class="col-5 d-flex align-items-center">
+                                                <img src="assets/exa.png" alt="" class="img-fluid rounded-circle img50"
+                                                    width="50">
+                                            </div>
+                                            <div class="col-7 px-0 d-flex align-items-center">
+                                                <div>
+                                                    <p class="mb-0 fontp">Order Number</p>
+                                                    <h6 class="text-success mb-0">{{order?.orderNumber}}</h6>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end align-items-center">
+                                        <div class="textcolor text-center">
+                                            <h6 class="mb-0 fonth6">STATUS</h6>
+                                            <P class="mb-0 fontp"> {{order?.status}}</P>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- button overflow-auto starting  -->
+                        <div class="h67 modalbody px-2">
+                            <div class="h-100">
+                                <div class="my-2 bgight bgbdradius px-2 py-1" *ngFor="let item of order?.products ">
+                                    <div class="row ">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <button class="btn px-0">
+                                                <div class="rounddiv bg-white d-flex" (click)="delete(item)">
+                                                    <img src="assets/icons8-multiply-36.png" alt=""
+                                                        class="img-fluid m-auto" width="34">
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <div class="col-4 d-flex align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 fonth6">{{item?.productName}}</h6>
+                                                <p class="mb-0 fontp"> {{item?.productVarientName}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 d-flex align-items-center px-0">
+                                            <div>
+                                                <form action="">
+                                                    <div class="input-group border-0 ">
+                                                        <div class="input-group-prepend border-0 "
+                                                            (click)="decrement(item)">
+                                                            <span
+                                                                class="input-group-text border-0 bg-primary text-white">-</span>
+                                                        </div>
+                                                        <input type="number" class="form-control border-0 px-1"
+                                                            placeholder="qty" [(ngModel)]="item.quantity"
+                                                            [ngModelOptions]="{standalone: true}">
+                                                        <div class="input-group-append border-0 "
+                                                            (click)="increment(item)">
+                                                            <span
+                                                                class="input-group-text border-0 bg-primary text-white">+</span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-success fonth6">₹{{item?.price}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- button overflow-auto ending -->
+                        <div class="h25 modalfooter">
+                            <div class="bgight  rounded mt-2  text-white pb-4 pt-2">
+                                <div id="accordion">
+
+                                    <div class="card text-dark border-0 cardhead">
+                                        <div class="card-header cardhead border-0" title="click me">
+                                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                                <div class="d-flex justify-content-between">
+                                                    <th>Grand Total</th>
+                                                    <th>{{order?.grandTotal}}</th>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne" class="collapse " data-parent="#accordion">
+                                            <div class="card-body pt-0">
+                                                <table class="w-100">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Sub Total</td>
+                                                            <td>{{order?.orderTotal}}</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Service Charge</td>
+                                                            <td>{{service}}</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Offer</td>
+                                                            <td>{{offer}}</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Discount</td>
+                                                            <td>{{discount}}</td>
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row" *ngIf="type !='RESERVATION'">
+                                    <div class="col-sm-6">
+                                        <div class="d-flex justify-content-center mt-md-0 mt-3">
+                                            <button class="btn btnbg bgprimary px-xl-5 px-4 text-white" (click)="kot()">
+                                                KOT
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="d-flex justify-content-center mt-md-0 mt-3">
+                                            <button class="btn btnbg bgprimary px-xl-4 text-white"
+                                                (click)="closeorder()">
+                                                Close Order
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="type ==='RESERVATION'">
+                                    <div class="col-sm-6">
+                                        <div class="d-flex justify-content-center mt-md-0 mt-3">
+                                            <button class="btn btnbg bgprimary px-xl-5 px-4 text-white"
+                                                (click)="cancel()">
+                                                cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="d-flex justify-content-center mt-md-0 mt-3">
+                                            <button class="btn btnbg bgprimary px-xl-4 text-white"
+                                                (click)="confirmOrder()">
+                                                Confirm
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="popup" class="pop d-flex  bgtlight">
+        <app-posmodals (valueChange)="toggle()" [productId]="productID" class="m-auto"></app-posmodals>
+    </div>

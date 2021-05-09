@@ -1,0 +1,36 @@
+<div class="conatiner-fluid">
+    <h5>Kitchen</h5>
+    <div class=" bdr"></div>
+    <div class="row ptext py-2 cardres" >
+        <div class="col-4 p-1 " [ngStyle]="title === 'Kitchen' && {'background-color':'#a787bd'}" >
+            <a class="text-decoration-none" (click)="titleChange('Kitchen')" [routerLink]="['/module/kitchen/krunningorder']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                            <img src="../../../assets/menu/icons8-waiter-96.png" width="46px" alt="" class="img-fluid">
+                        <p>Running Order</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- <div class="col-4 p-1">
+            <a class="text-decoration-none" [routerLink]="['/module/kitchen/kdelivery']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-delivery-48.png" width="46px" alt="" class="img-fluid">
+                        <p>Delivery</p>
+                    </div>
+                </div>
+            </a>
+        </div> -->
+        <div class="col-4 p-1" [ngStyle]="title === 'Product Enable or DISABLE' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Product Enable or DISABLE')" [routerLink]="['/module/kitchen/kproduct']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-shipping-product-48.png" width="46px" alt="" class="img-fluid">
+                        <p>Product E/D</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

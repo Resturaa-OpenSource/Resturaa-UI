@@ -1,0 +1,85 @@
+<!-- <div class="container-fluid px-0 border-bottom">
+        <div class="row ">
+            <div class="col-md-3 bg-light overx  py-2">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <img src="assets/cira.png" alt="" class="img-fluid w-100">
+                        <span class="d-flex align-items-center">RintuRaj C</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn">
+                        <img src="assets/dot.png" alt="" class="img-fluid w-100">
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 py-2">
+                    <div class="d-flex justify-content-between">
+                            <div class="d-flex align-items-center">
+                                    <button class="btn">
+                                            <img src="assets/back.png" alt="" class="img-fluid w-100">
+                                        </button>
+                            </div>
+                            <div class="d-flex">
+                            <div>
+                                <p class="mb-1">Store Name</p>
+                                <span style="font-size:10px;">Store No: 1000</span>
+                            </div>
+                            <div class="pr-sm-3 pr-2">
+                                    <img src="assets/cirb.png" alt="" class="img-fluid w-100">
+                            </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    
+    </div> -->
+
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-3 bglight py-2 border-bottom">
+            <div class="d-flex justify-content-between h-100 align-items-center">
+                <div class="">
+                    <div class="d-flex">
+                        <div class="px-2 personround d-flex justify-content-center align-items-center">
+                            <img src="assets/icons8-person-40.png" alt="" width="40" class="img-fluid rounded-circle w-100" >
+                        </div>
+                        <span class="d-flex align-items-center">{{staff.staffName}}</span>
+                    </div>
+                </div>
+                <div class=" d-flex align-items-center">
+                    <div class="">
+                        <button class="btn btnfoc" (click)="alert();">
+                            <img src="assets/dot.png" alt="" class="img-fluid w-100" width="40">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 border-bottom py-2">
+
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <button class="btn btnfoc" (click)="goBack()">
+                        <img src="assets/back.png" alt="" class="img-fluid w-100">
+                    </button>
+                    <h6 class="m-2"><b>{{title}}</b></h6>
+                </div>
+                <div class="d-flex">
+                    <div class="pr-1 d-flex align-items-center">
+                        <div>
+                            <p class="mb-1">{{store.storeName}}</p>
+                            <p style="font-size:10px;" class="text-right mb-0">Store No: {{store.storeId}}</p>
+                        </div>
+
+                    </div>
+                    <div class="pr-sm-3 pr-2 pl-1">
+                        <img [src]="store.imageLink" alt="" class="img-fluid w-100">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

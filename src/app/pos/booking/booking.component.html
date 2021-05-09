@@ -1,0 +1,221 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row pt-3 bglight">
+                        <div class="col-4 d-flex align-items-center">
+                            <h6>RESERVATION LIST</h6>
+                        </div>
+                        <div class="col-8 ">
+                            <div class="">
+                                <form action="">
+                                    <div class="form-group">
+                                        <input type="search" class="form-control border-0 shadow inpround" name="search"
+                                            placeholder="Search"  [(ngModel)]="searchText">
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid px-0">
+                        <div *ngIf="res.length==0">
+                                <div class="py-3" *ngFor="let item of [1,2,3,4,5,6]">
+                                    <ngx-content-loading [width]="" [height]="60">
+                                        <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g>
+                                        <svg:g ngx-rect width="300" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                                        <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                                        <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                            <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                    </ngx-content-loading>
+                                </div>
+                            </div>
+                    <div class="card border-0 shadow my-2 cardbdr" *ngFor="let item of res | filter :searchText">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="row">
+                                        <div class="col-7 ">
+                                            <div class="row h-100">
+                                                <!-- <div class="col-5 d-flex align-items-center">
+                                                    <img [src]="'/api/files/download/'+item?.reservationTable.custImage" alt="" class="img-fluid rounded-circle"
+                                                                width="50"> -->
+                                                    <!-- <img src="assets/exa.png" alt=""
+                                                        class="img-circle img-fluid rounded-circle" width="60"> 
+                                                </div> -->
+                                                <div class="col-7 px-0 d-flex align-items-center justify-content-center">
+                                                    <div>
+                                                        <h6 class="text-success fonth6 mb-0 justify-content-center" > 
+                                                            {{item?.reservationTable.custName}}</h6>
+                                                        <p class="mb-0 fontp">{{item?.reservationTable.custPhone}}</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-5 border-right border-left bleft d-flex justify-content-center align-items-center">
+                                            <div class="text-center ">
+
+                                                <p class="mb-0 fontp" *ngIf="item?.orderTable?.tables?.length>0"> Table
+                                                    No <br>
+                                                    <span *ngFor="let table of item?.orderTable?.tables">
+                                                        <b>{{table?.tableName}}</b> : </span> </p>
+
+                                                <p style="font-size: 12px">
+                                                    <span>
+                                                        {{item?.reservationTable?.startTime | date:"dd.MM.yyyy"}}</span>
+                                                    <br>
+                                                    <span>
+                                                        {{item?.reservationTable?.startTime | date:"h:mm a"}}</span>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                                    <div class=" pt-2 mx-2 pt-lg-0 mx-lg-0">
+                                        <div>
+                                            <button class="btn bgprimary btnbg text-white px-5 px-lg-4"
+                                                (click)="reservationView=item">View</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 wholemodal px-0">
+            <div class="wmodal" @fadeout>
+                <div class="modalscroll modaldialog">
+                    <div class="modalcontent">
+                        <div class="modalheader">
+                            <h6 class="text-center pt-2">Booking Details</h6>
+                            <div class="row pb-3 px-3">
+                                <div class="col-6">
+                                    <div class=" px-0 d-flex align-items-center">
+                                        <div>
+                                            <p class="mb-0 fontp"> Order Number:</p>
+                                            <h6 class="text- mb-0">{{reservationView?.orderTable?.orderNumber}}</h6>
+                                            <p class="mb-0 fontp" *ngIf="reservationView?.orderTable?.tables?.length>0">
+                                                Table
+                                                No :<br>
+                                                <span *ngFor="let table of reservationView?.orderTable?.tables">
+                                                    <b>{{table?.tableName}}</b>
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6 d-flex align-items-center justify-content-center">
+                                    <div class="">
+                                        <div class="text-center text-success">
+                                            <h6 class="mb-0 fonth6">AMOUNT:{{reservationView?.orderTable?.grandTotal}}
+                                            </h6>
+                                            <p class="mb-0 fontp">
+                                                {{reservationView?.reservationTable?.startTime | date:"dd.MM.yyyy"}}</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" d-flex justify-content-between   mx-3 py-2 px-3 mb-2 bgbdradius bgight">
+                                <div class="bdright flex-fill"> 
+                                <p class="mb-0 fontp"> Start Time:
+                                    {{reservationView?.reservationTable?.startTime | date:"h:mm a"}}</p>
+                                </div>
+                                <div class="flex-fill">
+                                    <div class="d-flex justify-content-end">
+                                <p class="mb-0 fontp"> End Time:
+                                    {{reservationView?.reservationTable?.endTime | date:"h:mm a"}}</p>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="mx-3 bgbdradius bgight py-2 px-3 mb-2">
+                                <p class="mb-0 fontp"> Occasion:
+                                    {{reservationView?.reservationTable?.occasion}}</p>
+                            </div>
+                            <div class="mx-3 bgbdradius bgight py-2 px-3 mb-2">
+                                <p class="mb-0 fontp">Special Request :
+                                    {{reservationView?.reservationTable?.specialRequest}}</p>
+                            </div>
+                        </div>
+                        <!-- button overflow-auto starting  -->
+                        <div class="h67 modalbody px-2">
+                            <div class="h-100">
+                                <div class="my-2 bgight bgbdradius px-2 py-1"
+                                    *ngFor="let item of reservationView?.orderTable?.products">
+                                    <div class="row ">
+                                        <div class="col-2 d-flex align-items-center">
+                                            <button class="btn px-0">
+                                                <div class="rounddiv bg-white d-flex">
+                                                    <!-- <img src="assets/icons8-multiply-36.png" alt=""
+                                                        class="img-fluid m-auto" width="34"> -->
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <div class="col-4 d-flex align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 fonth6">{{item?.productName}}</h6>
+                                                <p class="mb-0 fontp"> {{item?.productVarientName}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 d-flex align-items-center px-0">
+                                            <div>
+
+                                                <div class="input-group border-0 ">
+
+                                                    <input type="number" class="form-control border-0 px-1"
+                                                        [(ngModel)]="item.quantity" readonly>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-2 d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-success fonth6">₹{{item?.price}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- button overflow-auto ending -->
+                        <div class="modalfooter ">
+                            <div>
+                                <div class="bgight d-flex flex-wrap justify-content-around mt-2 py-4 px-3">
+                                    <div>
+                                        <button class="btn text-white bgprimary btnbg" (click)="cancelbooking()">
+                                            Cancel Booking
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button class="btn text-white bgprimary btnbg" (click)="addmore()">
+                                            Add More
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button class="btn text-white bgprimary btnbg px-4" (click)="kot()">
+                                            KOT
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

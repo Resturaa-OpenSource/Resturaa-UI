@@ -1,0 +1,37 @@
+// 
+.bgcolor{
+    background-color: #f1f1f1;
+}
+.textflow{
+    height: 80%;
+    overflow-y: auto;
+}
+.heightflow{
+    height: 100%;
+}
+.icontext p{
+    font-size: 12px;
+}
+.bgcolor{
+.btn:focus{
+box-shadow: none;
+}
+}
+.cardbg{
+    background-color: #f1f1f1 !important;
+}
+.bgbtn{
+background-color: #f1f1f1;
+}
+@media(min-width:992px){
+    .btnp{
+        padding: 6px 0;
+    }
+}
+@media(min-width:1026px){
+    .btnp{
+        padding:.375rem .75rem;
+    }
+}
+
+

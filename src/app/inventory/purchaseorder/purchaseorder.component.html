@@ -1,0 +1,42 @@
+<div class="container-fluid h-100">
+    <!-- <app-loader [show]="show" ></app-loader> -->
+    <div class="row h-100">
+        <div class="col-xl-11 col-sm-10 bglight h-100 overflow-auto" @fade>
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-xl-1 col-sm-2 h-100 overflow-auto">
+            <div class="" @fadeout>
+                <div class=" py-3">
+                    <div class="text-center my-2">
+                        <a class="" [routerLink]="['/module/inventory/purchaseorder/por']"
+                            routerLinkActive="router-link-active">
+                            <div class="roundtab m-auto m-auto d-flex justify-content-center align-items-center">
+                                <img src="assets/menu/icons8-porridge-48.png" alt="" class="img-fluid ">
+                            </div>
+                            <div class="mt-1">
+                                <h6 class="fontp mb-0">POR</h6>
+                                <hr class="my-2">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="text-center my-2">
+                        <a class="" [routerLink]="['/module/inventory/purchaseorder/createpor']"
+                            routerLinkActive="router-link-active">
+                            <div class="roundtab m-auto d-flex justify-content-center align-items-center">
+                                <img src="assets/menu/icons8-create-48.png" alt="" class="img-fluid ">
+                            </div>
+                            <div class="mt-1 ">
+                                <h6 class="fontp mb-0">Create POR</h6>
+                                <hr class="my-2">
+                            </div>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        
+<div>
+    <app-createpormodal (myOutput)="view($event)"></app-createpormodal>
+</div>

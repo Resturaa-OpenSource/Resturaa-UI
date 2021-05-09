@@ -1,0 +1,397 @@
+<div class="container-fluid h-100">
+    <app-loader [show]="show"></app-loader>
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row pt-3 bglight">
+                        <div class="col-4 d-flex align-items-center">
+                            <h6 class="">STAFF LIST</h6>
+                        </div>
+                        <div class="col-8 ">
+                            <div class="">
+                                <form action="">
+                                    <div class="form-group">
+                                        <input type="search" class="form-control border-0 shadow inpround" name="search"
+                                            placeholder="Search" [(ngModel)]="searchText">
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-0">
+                        <div *ngIf="staff.length==0">
+                                <div class="py-3" *ngFor="let item of [1,2,3,4,5,6]">
+                                    <ngx-content-loading [width]="" [height]="60">
+                                        <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g>
+                                        <svg:g ngx-rect width="300" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                                        <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                                        <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                            <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                    </ngx-content-loading>
+                                </div>
+                            </div>
+                    <div class="card border-0 shadow my-2 cardbdr" *ngFor="let item of staff  | filter :searchText">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row ">
+                                        <div class="col-xl-4 col-lg-6 col-4 d-flex align-items-center justify-content-center">
+                                            <img [src]="'/api/files/download/'+item?.staffImage" alt=""
+                                                class="img-fluid rounded-circle imgcircle" style="object-fit: cover;">
+                                        </div>
+                                        <div class="col-xl-8 col-lg-6 col-8   border-right bleft px-0 d-flex align-items-center ">
+                                            <div>
+                                                <h6 class="text-success font-weight-bold mb-0 fonth6">
+                                                    {{item?.staffName}}</h6>
+                                                <p class="mb-0 fontp">Staff Id: {{item?.staffID}}</p>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 my-2 my-lg-0  ">
+
+                                    <div class="row h-100">
+                                        <div class="col-6 d-flex justify-content-center align-items-center text-center">
+                                            <div class=" ">
+                                                <p class="mb-0 fonth6 text-success">Phone</p>
+                                                <h6>{{item?.staffPh}}</h6>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="col-6 d-flex justify-content-lg-end justify-content-center align-items-center">
+                                            <button class="btn btnbgc btnbg" (click)="status(item)">VIEW</button>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex justify-content-lg-end justify-content-center">
+                                                            <button class="btn bgprimary btnbg text-white">Select Customer</button>
+                                                        </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- ngif default starting -->
+        <div class="col-sm-5 wholemodal px-0" *ngIf="popstaffview">
+            <div class="wmodal" @fadeout>
+                <div class="modalscroll modaldialog mt-0" style="max-height: unset">
+                    <div class="modalcontent">
+                        <div class="modalheader">
+                            <div class="bg-primary text-center">
+                                <button class="mb-0 text-white text-center py-2 btn-block btn"
+                                    (click)="popstaff(); staffview=null">ADD
+                                    NEW STAFF</button>
+                            </div>
+                        </div>
+                        <div class="modalbody px-3 pb-3" *ngIf="staffview!= null">
+                            <div class="mt-3">
+                                <div class="imground mx-auto">
+                                    <img [src]="'/api/files/download/'+staffview?.staffImage" alt=""
+                                        class="img-fluid w-100 rounded-circle" style="height:150px;width:150px;
+                                        object-fit: cover;">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4 mb-2">
+                                <div>
+                                    <h6 class=" font-weight-bold mb-0 ">{{staffview?.staffName}}</h6>
+                                    <h6 class="mb-0 fontp">{{staffview?.staffID}}</h6>
+
+                                </div>
+                                <div class="text-success text-right">
+                                    <h6 class="  mb-0 fonth6"> <small>USERNAME: </small> {{staffview?.staffUserName}}
+                                    </h6>
+                                    <h6 class="mb-0 fontp"> <small>JOINED ON:</small>
+                                        {{staffview?.staffjoinedDate |date : "dd.MM.y"}}</h6>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <h6 class="mb-1">ADDRESS:</h6>
+                                <h6 class="mb-0 fontp">
+                                    {{staffview?.staffAddress1}},
+                                    {{staffview?.staffAddress2}}
+                                </h6>
+                            </div>
+                            <div class="mt-3">
+                                <h6 class="mb-1">TELEPHONE:</h6>
+                                <h6 class="mb-0 fonth6">{{staffview?.staffPh}}
+                                </h6>
+                            </div>
+                            <div class="mt-3">
+                                <h6 class="mb-1">EMAIL:</h6>
+                                <h6 class="mb-0 fonth6">{{staffview?.staffEmail}}</h6>
+                            </div>
+
+
+                        </div>
+                        <div class="modalfooter " *ngIf="staffview!= null">
+                            <div>
+                                <div class="bgight d-flex flex-wrap justify-content-around mt-2 py-4 px-3">
+
+                                    <div class="my-1">
+                                        <button class="btn text-white bgprimary btnbg my-1 px-3"
+                                            (click)="delete(staffview)">
+                                            Delete
+                                        </button>
+                                    </div>
+                                    <div class="my-1">
+                                        <button class="btn text-white bgprimary btnbg px-4 my-1 px-3"
+                                            (click)="popstaff(staffview);">
+                                            &nbsp;Edit&nbsp;
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ngif default ending -->
+        <!-- ngif popup table starting -->
+        <div class="col-sm-5 px-0 wholemodal" *ngIf="!popstaffview">
+            <div class="wmodal" @fadeout>
+                <div class="modaldialog modalscroll">
+
+                    <form (ngSubmit)="formRef.valid &&  updatestaff(formRef.value)" #formRef="ngForm"
+                        class="modalcontent">
+                        <div class="modalbody pt-3">
+                            <div class="px-3">
+
+                                <div class="form-group">
+                                    <div class="imground mx-auto d-flex">
+                                        <img class="rounded-circle img-fluid mx-auto d-block" [src]="imageUrl"
+                                            (click)="openFileSelector()" width="160" height="160" title="Upload your image">
+                                        <input type="file" hidden #fileUpload (change)="fileSelected($event)"
+                                            accept="image/*" class="cpointer">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input #nameField="ngModel" type="text"
+                                                class="form-control inpround shadow border-0 bglight" ngModel
+                                                name="staffName" placeholder="Name" id="firstName" required>
+                                            <div style="color: red"
+                                                *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                                                This field is required
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input type="number" #PhoneField="ngModel" ngModel type="tel"
+                                                class="form-control inpround shadow border-0 bglight"
+                                                pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder=" Phone Number"
+                                                name="staffPh" required>
+                                            <div style="color: red"
+                                                *ngIf="(PhoneField.touched || PhoneField.dirty) && PhoneField.invalid">
+                                                This field is required</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <select class="form-control inpround shadow border-0 bglight" id="sel1"
+                                                    name="sellist1" #GenField="ngModel" placeholder="Gender" ngModel
+                                                    name="staffGender" required>
+                                                    <option value="">Gender</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                                <div style="color: red"
+                                                    *ngIf="(GenField.touched || GenField.dirty) && GenField.invalid">
+                                                    This field is required</div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="date" class="form-control inpround shadow border-0 bglight"
+                                                    id="dateOfBirth" placeholder="Date of Birth" ngModel name="staffDOB"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" #EMILField="ngModel" ngModel type="email"
+                                        class="form-control inpround shadow border-0 bglight" id="email"
+                                        placeholder="Email Id" name="staffEmail" required>
+                                    <div style="color: red"
+                                        *ngIf="(EMILField.touched || EMILField.dirty) && EMILField.invalid">
+                                        This field is required</div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <input type="text" #addrsField="ngModel" ngModel
+                                        class="form-control inpround shadow border-0 bglight" id="address1"
+                                        name="staffAddress1" placeholder="Address 1" required>
+                                    <div style="color: red"
+                                        *ngIf="(addrsField.touched || addrsField.dirty) && addrsField.invalid">
+                                        This field is required</div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="text" #addrs2Field="ngModel" ngModel required
+                                        class="form-control inpround shadow border-0 bglight" id="address2"
+                                        name="staffAddress2" placeholder="Address 2">
+                                    <div style="color: red"
+                                        *ngIf="(addrs2Field.touched || addrs2Field.dirty) && addrs2Field.invalid">
+                                        This field is required</div>
+                                </div>
+
+
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <select class="form-control inpround shadow border-0 bglight" id="sel1"
+                                                #CountryField="ngModel" ngModel type="text" placeholder="Country"
+                                                name="country" required>
+                                                <option value="">Country</option>
+                                                <option>India</option>
+                                                <option>England</option>
+                                            </select>
+                                            <div style="color: red"
+                                                *ngIf="(CountryField.touched || CountryField.dirty) && CountryField.invalid">
+                                                This field is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <select class="form-control inpround shadow border-0 bglight" id="sel2"
+                                                #stateField="ngModel" ngModel type="text" placeholder="State" required
+                                                name="state">
+                                                <option value="">State</option>
+                                                <option>Karnataka</option>
+                                                <option>Tamilnadu</option>
+                                                <option>Andhra Pradesh</option>
+                                            </select>
+                                            <div style="color: red"
+                                                *ngIf="(stateField.touched || stateField.dirty) && stateField.invalid">
+                                                This field is required</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input type="number" #pinField="ngModel" ngModel name="staffPincode"
+                                                class="form-control inpround shadow border-0 bglight"
+                                                placeholder="Pincode" required>
+                                            <div style="color: red"
+                                                *ngIf="(pinField.touched ||pinField.dirty) && pinField.invalid">
+                                                This field is required</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" name="staffJobTittle" #jobField="ngModel" ngModel
+                                                class="form-control inpround shadow border-0 bglight"
+                                                placeholder="Job Title" required>
+                                            <div style="color: red"
+                                                *ngIf="(jobField.touched ||jobField.dirty) && jobField.invalid">
+                                                This field is required</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="from-group">
+                                                <input type="date" #joinedDate="ngModel"
+                                                    class="form-control inpround shadow border-0 bglight"
+                                                    placeholder="Joined Date" ngModel name="staffjoinedDate" required>
+                                                <div style="color: red"
+                                                    *ngIf="(joinedDate.touched ||joinedDate.dirty) && joinedDate.invalid">
+                                                    This field is required</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="from-group">
+                                                <input type="text" #permission="ngModel" ngModel name="staffPermission"
+                                                    class="form-control inpround shadow border-0 bglight"
+                                                    placeholder="Permission" required>
+                                                <div style="color: red"
+                                                    *ngIf="(permission.touched ||permission.dirty) && permission.invalid">
+                                                    This field is required</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control inpround shadow border-0 bglight"
+                                                placeholder="Username" required ngModel name="staffUserName">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="password" class="form-control inpround shadow border-0 bglight"
+                                                required ngModel name="staffPassword" type="password"
+                                                placeholder="Password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modalfooter">
+                            <div>
+                                <div class="bgight d-flex justify-content-around  mt-2 py-4 px-3">
+                                    <div>
+                                        <button class="btn text-white bgprimary btnbg px-4" (click)="popstaff();">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button class="btn text-white bgprimary btnbg px-4" type="submit">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- ngif popup table ending -->
+    </div>
+</div>

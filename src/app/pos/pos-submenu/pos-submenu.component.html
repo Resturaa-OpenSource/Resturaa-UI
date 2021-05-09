@@ -1,0 +1,77 @@
+<div class="conatiner-fluid">
+    <h5>POS</h5>
+    <div class=" bdr"></div>
+    <div class="row ptext py-2">
+        <div class="col-4 p-1 " [ngStyle]="title === 'Running Order' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Running Order')" [routerLink]="['/module/pos/runningorder']"
+                routerLinkActive="router-link-active">
+                <div class="card border-0 shadow text-center bg-white ">
+                    
+                    <div class="card-body">
+                        <div class="text-right"> <span class="badge badge-pill badge-primary">{{count?.newOrder}}</span></div>   
+                        <img src="../../../assets/menu/icons8-waiter-96.png" width="46px" alt="" class="img-fluid">
+                        <p>Running Order</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'New Order' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('New Order')" [routerLink]="['/module/pos/tableselection']"
+                routerLinkActive="router-link-active">
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="../../../assets/menu/icons8-new-copy-96.png" width="46px" alt="" class="img-fluid">
+                        <p>New Order</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Reservation' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Reservation')" [routerLink]="['/module/pos/booking']"
+                routerLinkActive="router-link-active">
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                            <div class="text-right"> <span class="badge badge-pill badge-primary">{{count?.reservation}}</span></div> 
+                        <img src="../../../assets/menu/icons8-reservation-96.png" width="46px" alt="" class="img-fluid">
+                        <p>Booking</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'New Booking' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('New Booking')" [routerLink]="['/module/pos/newbooking']"
+                routerLinkActive="router-link-active">
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="../../../assets/menu/icons8-restaurant-table-96.png" width="46px" alt=""
+                            class="img-fluid">
+                        <p>New Booking</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Parcel' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Parcel')" [routerLink]="['/module/pos/pselection']"
+                routerLinkActive="router-link-active">
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="../../../assets/menu/icons8-supplier-96.png" width="46px" alt="" class="img-fluid">
+                        <p>Parcel</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Customer' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Customer')" [routerLink]="['/module/pos/poscustomer']"
+                routerLinkActive="router-link-active">
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <div class="text-right"> <span class="badge badge-pill badge-primary"></span></div> 
+                        <img src="../../../assets/menu/icons8-team-96.png" width="46px" alt="" class="img-fluid">
+                        <p>Customer</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

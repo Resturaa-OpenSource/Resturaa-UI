@@ -1,0 +1,196 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div class="" @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row pt-3 bglight">
+                        <div class="col-4 d-flex align-items-center">
+                            <h6>INGREDIENTS LIST</h6>
+                        </div>
+                        <div class="col-8 ">
+                            <div class=" ">
+                                <form action="">
+                                    <div class="form-group">
+                                        <input type="search" class="form-control border-0 shadow inpround" name="search"
+                                            placeholder="Search">
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-0">
+                    <div *ngIf="ingredient.length==0">
+                        <div class="py-3" *ngFor="let item of [1,2,3,4,5,6]">
+                            <ngx-content-loading [width]="" [height]="60">
+                                <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g>
+                                <svg:g ngx-rect width="300" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                                <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                                <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                            <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                            </ngx-content-loading>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow my-2 cardbdr text-center" *ngFor="let item of ingredient">
+                        <div class="card-body">
+                            <div class="row rowh6">
+                                <div class="col-lg-5 py-lg-0 py-2">
+                                    <div class="row">
+                                        <div class="col-7 d-flex align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 fontp">ITEM CODE</h6>
+                                                <p class="mb-0 fontp">{{item.id}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-5 d-flex align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 fontp">NAME</h6>
+                                                <p class="mb-0 fontp">{{item.name}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 py-lg-0 py-2">
+                                    <div class="row h-100">
+                                        <div class="col-5 d-flex align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 fontp">UNIT PRICE</h6>
+                                                <p class="mb-0 fontp">{{item.unitPrice}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 d-flex align-items-center">
+                                            <div>
+                                                <h6 class="mb-0 fontp">SKU</h6>
+                                                <p class="mb-0 fontp">{{item.mrp}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex align-items-center">
+                                            <div>
+                                                <button class="btn bgprimary btnbg text-white"
+                                                    (click)="viewdetails(item);">View</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- default ngif starting -->
+        <div class="col-sm-5 wholemodal px-0" *ngIf="inglist">
+            <div class="wmodal" @fadeout>
+                <div class="modalscroll modaldialog mt-0" style="max-height: unset">
+                    <div class="modalcontent">
+                        <div class="modalheader">
+                            <div class="bg-primary text-center">
+                                <button class="mb-0 text-white text-center py-2 btn-block btn"
+                                    (click)="popinglist(); ingredientview=null">ADD
+                                    ITEM</button>
+                            </div>
+                        </div>
+                        <div class="modalbody h-100  d-flex align-items-center " *ngIf="ingredientview!= null">
+                            <div class="row mx-3 rowp w-100">
+                                <div class="col-6 border text-center px-0">
+                                    <div>
+                                        <div class="bg-primary py-1 text-white">
+                                            <h6 class="mb-0 fonth6"> Item</h6>
+                                        </div>
+                                        <p class="my-1 fontp">Item Code</p>
+                                        <p class="my-1 fontp">Name</p>
+                                        <p class="my-1 fontp">Unit Price</p>
+                                        <p class="my-1 fontp">MRP</p>
+                                        <p class="my-1 fontp">Packed On</p>
+                                        <p class="my-1 fontp">Validity</p>
+                                        <p class="my-1 fontp">SKU</p>
+                                        <p class="my-1 fontp">Brand</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 border text-center px-0">
+                                    <div>
+                                        <div class="bg-primary py-1 text-white">
+                                            <h6 class="mb-0 fonth6">Value</h6>
+                                        </div>
+                                        <p class="my-1 fontp">{{ingredientview?.id}} </p>
+                                        <p class="my-1 fontp">{{ingredientview?.name}} </p>
+                                        <p class="my-1 fontp">{{ingredientview?.unitPrice}}</p>
+                                        <p class="my-1 fontp">{{ingredientview?.mrp}}</p>
+                                        <p class="my-1 fontp">{{ingredientview?.packedOn}} </p>
+                                        <p class="my-1 fontp">{{ingredientview?.validitiy}}</p>
+                                        <p class="my-1 fontp">{{ingredientview?.sku}}</p>
+                                        <p class="my-1 fontp">{{ingredientview?.currentSKU}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modalfooter bgight py-4" *ngIf="vdetails">
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div><button class="btn bgprimary btnbg text-white px-4"
+                                        (click)="popinglist();">Edit</button></div>
+                                <div><button class="btn bgprimary btnbg text-white">Delete</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- default ngif ending -->
+        <!-- ngif starting -->
+        <div class="col-sm-5 px-0 h-100 overflow-auto " *ngIf="!inglist">
+            <div class=" w-100" @fadeout>
+                <div class="text-center mt-4">
+                    <h6>ITEM DETAILS</h6>
+                </div>
+                <div class="p-3">
+                    <form (ngSubmit)="formRef.valid &&  update(formRef.value)" #formRef="ngForm" class="">
+
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control border-0 inpround bglight shadow " name="name"
+                                ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Unit Price</label>
+                            <input type="text" class="form-control border-0 inpround bglight shadow" name="unitPrice"
+                                ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="">MRP</label>
+                            <input type="number" class="form-control border-0 inpround bglight shadow " name="mrp"
+                                ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for=""> Packed On</label>
+                            <input type="date" class="form-control border-0 inpround bglight shadow" name="packedOn"
+                                ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Validity</label>
+                            <input type="date" class="form-control border-0 inpround bglight shadow" name="validitiy"
+                                placeholder="" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="">SKU</label>
+                            <input type="number" class="form-control border-0 inpround bglight shadow" name="sku"
+                                placeholder="" ngModel>
+                        </div>
+                        <div class="form-group">
+                            <label for="">CurrentSKU</label>
+                            <input type="number" class="form-control border-0 inpround bglight shadow" name="currentSKU"
+                                placeholder="" ngModel>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn bgprimary btnbg text-white px-3" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- ngif ending -->
+    </div>
+</div>

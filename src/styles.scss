@@ -1,0 +1,361 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@font-face { font-family: 'Lato'; src: url('Lato-Regular.ttf'); } 
+@font-face { font-family: 'Quicksand-Regular'; src: url('Quicksand-Regular.ttf'); } 
+html {
+  height: 100vh;
+}
+body {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  font-family: 'Lato', sans-serif !important;
+  //font-family: 'Quicksand-Regular', sans-serif !important;
+}
+a:hover {
+  cursor: pointer;
+}
+a {
+  color: #000 !important;
+}
+@media only screen and (min-width: 777px) {
+  body {
+    overflow: hidden;
+  }
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(139, 139, 139);
+}
+
+.ptext p {
+  font-size: 10px;
+  margin-bottom: 0;
+}
+.ptext .card-body {
+  padding: 1rem;
+  margin: auto;
+}
+.ptext .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 108px;
+}
+@media (min-width: 777px) {
+  .ptext .card {
+    height: 118px;
+  }
+}
+@media (min-width: 1024px) {
+  .ptext .card {
+    height: 100px;
+  }
+}
+
+.bdr {
+  border-bottom: 2px solid #000;
+}
+.bgprimary {
+  // background-image:linear-gradient(to right, #4526EB,#BB00FE);
+  // background-image: linear-gradient(to right,  #bd30ff, #7c39ff);
+  background-image: linear-gradient(to right,  #8f56a3, #6959a6);
+}
+.btnbg {
+  //
+  border-radius: 20px !important;
+}
+.bglight {
+  background-color: #f9f9f9;
+}
+// button effects starting
+.btn:focus {
+  box-shadow: none !important;
+}
+.btn:active {
+  box-shadow: 2px 10px 9px 2px #00000020 !important;
+}
+.btnbg:hover {
+  background: #fff;
+  // box-shadow: 0px 2px 10px 5px #bd30ff;
+  
+  box-shadow: 0px 2px 10px 5px #8f56a3;
+  color: #000 !important;
+}
+
+.btnbg:after {
+  content: "";
+  background: linear-gradient(to right, #f70289, #243aab);
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.btnbg:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+.sticky-top{
+z-index:1000 !important;
+}
+// button effects ending
+.fontp {
+  font-size: 14px;
+}
+.fonth6 {
+  font-size: 16px;
+}
+@media (min-width: 1024px) {
+  .fontp {
+    font-size: 12px;
+  }
+  .fonth6 {
+    font-size: 14px;
+  }
+}
+.wholemodal {
+  width: 100%;
+  height: 100%;
+}
+.wmodal {
+  width: 100%;
+  height: 100%;
+}
+.modalscroll {
+  display: flex;
+  // max-height: calc(100% - 1rem); //important for scrolling
+}
+.modaldialog {
+  position: relative;
+  width: auto;
+  // margin: 1rem 0 1rem;
+  height: 100%;
+}
+.modalcontent {
+  max-height: calc(100vh - 1rem);
+  overflow: hidden;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+.modalheader,
+.modalfooter {
+  flex-shrink: 0;
+}
+.modalbody {
+  overflow-y: auto;
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  overflow-x: hidden;
+}
+@media (min-width: 768px) {
+  .h-80 {
+    height: 86.6%;
+    // overflow-y: auto;
+  }
+}
+h-80 {
+  height: auto;
+}
+.inpround {
+  border-radius: 30px !important;
+}
+.btnround {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(241, 225, 225);
+}
+.cardbdr {
+  border-radius: 10px;
+}
+.cardbody {
+  padding: 0.85rem;
+}
+// .card-img-top{
+//     width: 150px !important;
+//     height: 100px !important;
+// }
+.text50 {
+  font-size: 8px;
+}
+.bgbradius {
+  border-radius: 12px;
+}
+.textcolor {
+  color: darkorchid;
+}
+.rounddiv {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.bgbdradius {
+  border-radius: 26px;
+}
+.input-group-text {
+  border-radius: 50%;
+}
+.bgight {
+  background-color: #ececec;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+// css for toggle switch
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 27px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+input::-webkit-input-placeholder {
+  font-size: 13px;
+ 
+}
+.btnbgc{
+  background-color: #dee2e6;
+}
+.menutext{
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #7c39ff;
+}
+.report{
+  .nav-pills .nav-link{
+      background-color: #fff;
+      color: #000;
+      border: .05px solid rgb(248, 248, 248);
+      border-radius: 0;
+      font-size: 13px;
+      font-weight: bold;
+  }
+  .nav-pills .nav-link.active {
+      color: #000;
+      background-color: #f9f9f9;
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  }
+}
+.cpointer{
+  cursor: pointer;
+}
+.imgcircle{
+  width:60px !important;
+  height: 60px !important;
+  object-fit: cover;
+  }
+  .imgtop{
+    width: 100%;
+    height: 100%;
+  }
+  @media(min-width:576px){
+    .imgtop{
+      width:100% !important;
+      height: 110px !important;
+      object-fit: cover;
+    }
+  }
+  .overx{
+    overflow-x: hidden;
+  }
+  .diflex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .overflowy{
+    overflow-y: auto;
+    overflow-x:hidden;
+  }
+
+
+ // placeholder styling
+
+::-webkit-input-placeholder { /* Edge */
+  text-transform:capitalize !important;
+}
+
+:-ms-input-placeholder { /* Internet Explorer */
+  text-transform:capitalize !important;
+}
+
+::placeholder {
+  text-transform:capitalize !important;
+}

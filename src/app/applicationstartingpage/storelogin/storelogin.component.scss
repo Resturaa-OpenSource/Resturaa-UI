@@ -1,0 +1,21 @@
+.h5{
+    height: 7%;
+}
+.h95{
+    height: 93%;
+}
+.btnbg{
+    // 
+    border-radius: 20px;
+}
+.inprounded{
+    border-radius: 40px;
+}
+.form50{
+    width: 100%
+}
+@media(min-width:768px){
+    .form50{
+        width: 50%;
+    }
+}

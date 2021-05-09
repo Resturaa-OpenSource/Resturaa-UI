@@ -1,0 +1,86 @@
+<div class="conatiner-fluid">
+    <h5>Stores</h5>
+    <div class=" bdr"></div>
+    <div class="row ptext py-2">
+        <div class="col-4 p-1 " [ngStyle]="title === 'Store Management' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Store Management')" [routerLink]="['/module/stores/storemanagement']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-management-46.png" alt="" class="img-fluid">
+                        <p>Store Management</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Offer Management' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Offer Management')"[routerLink]="['/module/stores/offermanagement']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-discount-46.png" alt="" class="img-fluid">
+                        <p>Offer Management</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Reports' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Reports')"[routerLink]="['/module/stores/reports']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-pie-chart-46.png" alt="" class="img-fluid">
+                        <p>Reports</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Staff Management' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Staff Management')"[routerLink]="['/module/stores/staffmanagement']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-name-tag-46.png" alt="" class="img-fluid">
+                        <p>Staff Management</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Bill Page Settings' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Bill Page Settings')" [routerLink]="['/module/stores/billpage']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-bill-46.png" alt="" class="img-fluid">
+                        <p>Bill Page Settings</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Product Management' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Product Management')" [routerLink]="['/module/stores/productmanagement']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-wrap-46.png" alt="" class="img-fluid">
+                        <p>Product Management</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-4 p-1" [ngStyle]="title === 'Product Tags' && {'background-color':'#a787bd'}">
+            <a class="text-decoration-none" (click)="titleChange('Product Tags')" [routerLink]="['/module/stores/producttags']" routerLinkActive="router-link-active" >
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/menu/icons8-tags-46.png" alt="" class="img-fluid">
+                        <p>Product Tags</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- <div class="col-4 p-1">
+            <a class="text-decoration-none">
+                <div class="card border-0 shadow text-center bg-white ">
+                    <div class="card-body">
+                        <img src="assets/customer.png" alt="" class="img-fluid">
+                        <p>Store Open/Close</p>
+                    </div>
+                </div>
+            </a>
+        </div> -->
+    </div>
+</div>

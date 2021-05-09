@@ -1,0 +1,120 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div class="" @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row py-4 bglight">
+                        <div class="col-4 d-flex align-items-center">
+                            <h6 class="mb-0">TABLE LIST</h6>
+                        </div>
+                        <div class="col-8 ">
+                            <div class="">
+                                <div>
+                                    <div class="form-group mb-0">
+                                        <input type="search" class="form-control border-0 shadow inpround" 
+                                            placeholder="Search" [(ngModel)]="searchText">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container-fluid px-0">
+                        <div class="row" *ngIf="seat.length==0">
+                                <div class="py-3 w-25 h-100" *ngFor="let item of [1,2,3,4,5,6]">
+                                    <ngx-content-loading [width]="" [height]="300">
+                                        <!-- <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g> -->
+                                        <svg:g ngx-rect width="300" height="300" y="10" x="70" rx="5" ry="5"></svg:g>
+                                        <!-- <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g> -->
+                                        <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                                <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                    </ngx-content-loading>
+                                </div>
+                            </div>
+                    <div class="row">
+
+                      
+                        <div class=" col-lg-3 col-md-4  px-2 col-6" *ngFor="let item of seat | filter :searchText">
+                            <div class="card border-0 shadow text-center cardbdr my-2">
+                                <div class="card-body px-1" (click)="selected(item)">
+                                    <h6 class=" mb-0 fonth6">TABLE NUMBER</h6>
+                                    <h6 class="">{{item?.tableName}}</h6>
+                                    <p class="mb-0 fonth6">Seats Available</p>
+                                    <h6 class="mb-0 fonth6">{{item?.seatCount - item?.seatOccupied}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 wholemodal px-0" *ngIf="order.tables.length>0">
+            <div class="wmodal" @fadeout>
+                <div class="modalscroll modaldialog">
+                    <div class="modalcontent">
+                        <div class="modalheader pl-3 py-3">
+                            <h6>SELECTED TABLES</h6>
+                        </div>
+                        <div class="modalbody px-2">
+                            <div class="card border-0 shadow bglight cardbdr my-2" *ngFor="let item of order.tables">
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-5 text-center">
+                                            <h6 class="mb-0 fonth6 ">TABLE NAME</h6>
+                                            <h6>{{item.tableName}}</h6>
+                                        </div>
+                                        <div class="col-5">
+                                            <div>
+                                                <form action="">
+                                                    <div class="input-group border-0  ">
+                                                        <div class="input-group-prepend border-0 ">
+                                                            <span
+                                                                class="input-group-text border-0 bg-primary text-white"
+                                                                (click)="decrement(item)" aria-hidden="true">-</span>
+                                                        </div>
+                                                        <input type="number"
+                                                            class="text-center form-control border-0 px-1 "
+                                                            placeholder="seats" id="num" name="num" class="qty-text"
+                                                            id="qty" step="1" min="1" max="300"
+                                                            [(ngModel)]="item.seatCount">
+                                                        <div class="input-group-append border-0">
+                                                            <span
+                                                                class="input-group-text border-0 bg-primary text-white"
+                                                                (click)="increment(item)" aria-hidden="true">+</span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <button class="btn px-0">
+                                                <div class="rounddiv bg-white d-flex">
+                                                    <img src="assets/icons8-multiply-36.png" (click)="delete(item)"
+                                                        alt="" class="img-fluid m-auto" width="34">
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modalfooter bgight ">
+                            <div class="d-flex justify-content-around  py-4 ">
+                                <div>
+                                    <button class="btn bgprimary text-white btnbg" [routerLink]="['/module/pos/']"
+                                        routerLinkActive="router-link-active">Cancel</button>
+                                </div>
+                                <div>
+                                    <button class="btn bgprimary text-white btnbg px-4" (click)="next()">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

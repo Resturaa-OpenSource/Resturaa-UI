@@ -1,0 +1,15 @@
+.cardbdr{
+    border-radius: 10px;
+}
+@media(max-width:768px){
+    .bleft{
+border-right:none !important;
+    }
+}
+.input-group-text{
+    border-radius: 50%;
+    
+}
+.posrelative{
+    position: relative;
+}

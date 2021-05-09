@@ -1,0 +1,364 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-6 wholemodal px-0 ">
+            <div class="wmodal " @fadeout>
+                <div class="modaldialog modalscroll">
+                    <div class="modalcontent">
+                        <div class="modalbody ">
+                            <div></div>
+                            <div class="row px-3 mt-3">
+                                <div class="col-5 d-flex justify-content-center align-items-center">
+                                    <div class="imgroundb m-auto">
+                                        <img [src]="store?.imageLink" alt=""
+                                            class="img-fluid rounded-circle mx-auto" style="height:160px;width:160px;
+                                            object-fit: cover;">
+
+                                    </div>
+                                </div>
+                                <div class="col-7 d-flex align-items-center">
+                                    <div>
+                                    <div>
+                                        <h6 class=" ">{{store.storeName}}</h6>
+                                        <h6 class="mb-1 fonth6">{{store.email}}</h6>
+                                        <h6 class="mb-1 fonth6">{{store.createdDate}}</h6>
+                                        <h6 class="mb-1 fonth6">{{store.status}}</h6>
+                                        <h6 class="mb-1 fonth6">{{store.storeManager}}</h6>
+                                    </div>
+                                    <div>
+                                        <h6>ADDRESS</h6>
+                                        <p class="mb-0 fontp text-justify">
+                                            {{store.storeAddress1}}<br>
+                                            {{store.storeAddress2}}
+                                        </p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row px-4 mt-4">
+                                <div class="col-12">
+                                    <div class="card cardbdr text-center">
+                                        <div class="card-body">
+                                            <h6 class="fonth6">Subscription Type<br>
+                                                {{store.subscription}}
+                                            </h6>
+                                            <h6>REGISTERED ON {{store.createdDate | date:'dd/MM/yyyy'}}</h6>
+                                            <button class="bgprimary btnbg text-white btn">Change Plan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex px-4 mb-4 mt-2">
+                                <div class="flex-fill cardbdr  text-center">
+                                    <div class="d-flex justify-content-between p-2">
+                                        <div>
+                                            <h6 class="mb-0 fonth6">SELLING PRODUCTS</h6>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fonth6">{{prd.length}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex-fill cardbdr  text-center">
+                                    <div class="d-flex justify-content-between p-2">
+                                        <div>
+                                            <h6 class="mb-0 fonth6">TABLES</h6>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fonth6">{{table.length}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modalfooter">
+                            <div>
+                                <div class="bgight  mt-2 py-5 px-3">
+                                    <div class="d-flex justify-content-around">
+                                        <button class="btn text-white bgprimary btnbg px-5" (click)="editdetails();">
+                                            Edit
+                                        </button>
+                                        <button class="btn text-white bgprimary btnbg " data-toggle="modal"
+                                            data-target="#myModal">
+                                            Add Products
+                                        </button>
+                                        <button class="btn text-white bgprimary btnbg " data-toggle="modal"
+                                            data-target="#myModal1">
+                                            Manage Tables
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- default ngif starting -->
+        <div class="col-sm-6 bglight px-0 h-100 overflow-auto" *ngIf="editable">
+            <div @fade>
+                <ul class="nav nav-pills nav-justified sticky-top" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active bg-white rounded-0" data-toggle="pill" href="#product">
+                            <h6>PRODUCT LIST</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bg-white rounded-0" data-toggle="pill" href="#table">
+                            <h6>TABLE LIST</h6>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="tab-content">
+                    <div id="product" class="container tab-pane active"><br>
+                        <div class="container-fluid">
+                                <div class="row " *ngIf="prd.length==0 ">
+                                        <div class="py-3 w-25 h-100" *ngFor="let item of [1,2,3,4,5,6]">
+                                            <ngx-content-loading [width]="" [height]="300">
+                                                <!-- <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g> -->
+                                                <svg:g ngx-rect width="300" height="300" y="10" x="70" rx="5" ry="5"></svg:g>
+                                                <!-- <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g> -->
+                                                <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                                                <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                            </ngx-content-loading>
+                                        </div>
+                                    </div>
+                            <div class="row h70 ">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-6 py-2 px-1" *ngFor="let item of prd">
+                                    <a class="text-decoration-none apointer">
+                                        <div class="card border-0 shadow cardbdr productcard h-100" >
+                                            <img  [src]="'/api/files/download/'+item?.productImage" alt="" class="card-img-top img-fluid imgtop">
+                                            <div class="card-body cardbody">
+                                                <div class="w-100">
+                                                    <div class="">
+                                                        <h6 class="fonth6">{{item.productName}}</h6>
+                                                        <p class="text-success mb-0">{{item.productPrice}}</p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="table" class="container tab-pane fade"><br>
+                        <div class="container-fluid px-0">
+                                <div class="row " *ngIf="table.length==0 ">
+                                        <div class="py-3 w-25 h-100" *ngFor="let item of [1,2,3,4,5,6]">
+                                            <ngx-content-loading [width]="" [height]="300">
+                                                <!-- <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g> -->
+                                                <svg:g ngx-rect width="300" height="300" y="10" x="70" rx="5" ry="5"></svg:g>
+                                                <!-- <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g> -->
+                                                <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                                                <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                            </ngx-content-loading>
+                                        </div>
+                                    </div>
+                            <div class="row">
+                                <div class=" col-lg-4 col-md-6  px-2 col-6" *ngFor="let item of table">
+                                    <div class="card border-0 shadow text-center cardbdr my-2">
+                                        <div class="card-body px-1">
+                                            <h6 class=" mb-0 fonth6">TABLE NUMBER</h6>
+                                            <h6 class="">{{item.tableName}}</h6>
+                                            <p class="mb-0 fonth6">Seats Available</p>
+                                            <h6 class="mb-0 fonth6">{{item.seatCount}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- default ngif ending -->
+        <!-- ngif starting -->
+        <div class="col-sm-6 wholemodal px-0 bglight" *ngIf="!editable">
+            <div class="wmodal" @fadeout>
+                <div class="modaldialog modalscroll">
+
+                    <form (ngSubmit)="formRef.valid &&  editupdatestore(formRef.value)" #formRef="ngForm"
+                    class="modalcontent">
+                        <div class="modalbody p-3">
+                            <h6 class="text-center mb-4">STORE DETAILS</h6>
+
+                            <div class="form-group">
+                                    <div class="imground mx-auto d-flex">
+
+                                            <img class="rounded-circle img-fluid mx-auto d-block  imgroundb" [src]="store?.imageLink"
+                                            (click)="openFileSelector()" width="160" height="160" >
+                                        <input type="file" hidden #fileUpload (change)="fileSelected($event)"
+                                            accept="image/*" class="cpointer">
+                                            <input type="text" hidden ngModel name="storeId">
+                                        <!-- <img alt="" class="rounded-circle img-fluid mx-auto d-block"> -->
+                                       
+                                    </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        
+                                        <input type="text" placeholder="Store Name" #storeField="ngModel" id="storename" name="storeName"
+                                            class="form-control inpround shadow border-0" ngModel required>
+                                            <div style="color: red"
+                                            *ngIf="(storeField.touched || storeField.dirty) && storeField.invalid">
+                                            This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="email" placeholder="Email" id="email" name="email" #emailField="ngModel"
+                                            class="form-control inpround shadow border-0" ngModel required>
+                                            <div style="color: red"
+                                            *ngIf="(emailField.touched || emailField.dirty) && emailField.invalid">
+                                            This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type="password" placeholder="Password" #pwordfield="ngModel"
+                                            class="form-control inpround shadow border-0" ngModel required id="password" name="password">
+                                            <div style="color: red"
+                                            *ngIf="(pwordfield.touched || pwordfield.dirty) && pwordfield.invalid">
+                                            This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <!-- <div class="form-group">
+                                        <input type="date" placeholder="Created Date" #createdate="ngModel"
+                                            class="form-control inpround shadow border-0" ngModel required id="createdate" name="createdDate">
+                                            <div style="color: red"
+                                            *ngIf="(createdate.touched || createdate.dirty) && createdate.invalid">
+                                            This field is required
+                                        </div>
+                                    </div> -->
+                              
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Subscription" #subscription="ngModel"
+                                            class="form-control inpround shadow border-0" ngModel required id="subscription" name="subscription">
+                                            <div style="color: red"
+                                            *ngIf="(subscription.touched || subscription.dirty) && subscription.invalid">
+                                            This field is required
+                                        </div>
+
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Address1" class="form-control inpround shadow border-0" #addr1="ngModel" ngModel 
+                                id="address1" name="storeAddress1" required>
+                                <div style="color: red"
+                                            *ngIf="(addr1.touched || addr1.dirty) && addr1.invalid">
+                                            This field is required
+                                        </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Address2" class="form-control inpround shadow border-0" #addr2="ngModel" ngModel 
+                                id="address2" name="storeAddress2" required>
+                                <div style="color: red"
+                                            *ngIf="(addr2.touched || addr2.dirty) && addr2.invalid">
+                                            This field is required
+                                        </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select class="form-control inpround shadow border-0 bglight" id="sel2"
+                                            #stateField="ngModel" ngModel type="text" name="state" #state="ngModel" ngModel required>
+                                            <option value="">State</option>
+                                            <option>Karnataka</option>
+                                            <option>Tamilnadu</option>
+                                            <option>Andhra Pradesh</option>
+                                        </select>
+                                        <div style="color: red"
+                                            *ngIf="(state.touched || state.dirty) && state.invalid">
+                                            This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <select class="form-control inpround shadow border-0 bglight" id="sel1"
+                                            #CountryField="ngModel" ngModel type="text" name="country" #country="ngModel" ngModel required>
+                                            <option value="">Country</option>
+                                            <option>India</option>
+                                            <option>England</option>
+                                        </select>
+                                        <div style="color: red"
+                                            *ngIf="(country.touched || country.dirty) && country.invalid">
+                                            This field is required
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="number" placeholder="Pincode" #pincode="ngModel"
+                                            class="form-control inpround shadow border-0" ngModel required id="pincode" name="storePincode">
+                                            <div style="color: red"
+                                            *ngIf="(pincode.touched || pincode.dirty) && pincode.invalid">
+                                            This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" placeholder="Store Manager" #storemanager="ngModel"
+                                            class="form-control inpround shadow border-0" ngModel required id="storem" name="storeManager">
+                                            <div style="color: red"
+                                            *ngIf="(storemanager.touched || storemanager.dirty) && storemanager.invalid">
+                                            This field is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                        </div>
+                        <div class="modalfooter">
+                            <div>
+                                <div class="bgight  mt-2 py-5 px-3">
+                                    <div class="d-flex justify-content-around">
+                                        <button class="btn text-white bgprimary btnbg px-3" (click)="editdetails();">
+                                            Cancel
+                                        </button>
+
+                                        <button class="btn text-white bgprimary btnbg px-3" type="submit">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!--  ngif ending -->
+    </div>
+</div>
+
+<!-- popup for product details -->
+<div>
+    <app-modalproducts (myOutput)="updateproduct($event)" ></app-modalproducts>
+</div>
+
+<!-- popup for table details -->
+<div>
+    <app-modaltable (myOutput)="updatetable($event)"></app-modaltable>
+</div>

@@ -1,0 +1,62 @@
+<div class="h-100 overflowy">
+      
+
+    <div class="">
+        <app-miniheader></app-miniheader>
+    </div>
+    <app-loader [show]="show" ></app-loader>
+    <div class="container-fluid my-lg-0 my-4" class="h95">
+        <div class="row h-100">
+            <div class="col-lg-6 h-100 d-flex justify-content-center align-items-center">
+                <div class="">
+                    <img src="assets/storeimg.png" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-6 h-100 d-flex justify-content-center align-items-center">
+                <div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="px-2">
+                            <img src="assets/logo23a.png" alt="" class="img-fluid mx-auto d-block" width="400">
+                            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+                                eligendi reiciendis ratione possimus. Illo odio hic,
+                                et provident ullam quos consectetur id eveniet iste assumenda doloribus saepe!
+                                Asperiores, alias rem?
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="d-flex justify-content-center align-items-center my-4">
+                        <form action="" class="form50 px-lg-0 px-3" (ngSubmit)="login(formRef.value)" #formRef="ngForm">
+                            <div class="form-group">
+                                <input required ngModel name="storeId" type="text"
+                                    class="form-control border-0 shadow inprounded" placeholder="Store ID" value="">
+                            </div>
+                            <div class="form-group">
+                                <input required ngModel name="password" type="password"
+                                    class="form-control border-0 shadow inprounded" placeholder="Password" value="">
+                            </div>
+                            <div class="clearfix ">
+                                <a href="#" class="float-right text-dark">Forgot Password?</a>
+                            </div>
+                            <div class="d-flex justify-content-center mt-3">
+                                <!-- <button class="btn btnbg bgprimary px-5">
+                                    <img src="assets/play.png" alt="" class="img-fluid">
+                                </button> -->
+                                <!-- [disabled]="formRef.invalid" -->
+                                <input  type="submit" [routerLink]="['/userlogin']" routerLinkActive="router-link-active" 
+                                    class="btn btnbg bgprimary px-5 text-white" value="Login" />
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

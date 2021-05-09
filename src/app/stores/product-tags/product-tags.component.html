@@ -1,0 +1,337 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div @fade>
+                <div class="container-fluid  px-0 sticky-top ">
+                    <div class="row p-4 bglight d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <h6>TAGS</h6>
+                        </div>
+                        <div>
+                            <button class="btn bgprimary btnbg text-white" (click)="this.tagpopup=!this.tagpopup;">Add
+                                New Tag</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-2">
+                        <div class="row " *ngIf="tag.length==0 ">
+                                <div class="py-3 w-25 h-100" *ngFor="let item of [1,2,3,4,5,6]">
+                                    <ngx-content-loading [width]="" [height]="300">
+                                        <!-- <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g> -->
+                                        <svg:g ngx-rect width="300" height="300" y="10" x="70" rx="5" ry="5"></svg:g>
+                                        <!-- <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g> -->
+                                        <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                                        <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                    </ngx-content-loading>
+                                </div>
+                            </div>
+                    <div class="row">
+                        <div class=" col-xl-3 col-md-4  px-2 col-6 my-2" *ngFor="let item of tag">
+                            <div class="card border-0 shadow text-center cardbdr  h-100">
+                                <div class="card-body px-1 d-flex justify-content-center align-items-center" (click)="viewoffer(item);">
+                                    <div>
+                                    <div class="mb-2">
+                                        <img [src]="'/api/files/download/'+item?.imageID" alt=""
+                                            class="img-fluid rounded-circle imgcircle" width="60">
+                                    </div>
+                                    <h6 class="mb-0 fonth6">{{item?.tagName}}</h6>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ngif popup1 starting -->
+        <div class="col-sm-5 h-100 overflow-auto" *ngIf="tagView!=null">
+            <div class="" @fadeout>
+                <div class="container-fluid sticky-top bg-white px-0">
+                    <div class="row py-4 bg-white">
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-5 d-flex justify-content-end">
+                                    <div class="imground ">
+                                        <img [src]="'/api/files/download/'+tagView?.imageID" alt=""
+                                            class="img-fluid rounded-circle imgcircle" width="60">
+                                    </div>
+                                </div>
+                                <div class="col-7 pl-2 d-flex align-items-center ">
+                                    <div>
+                                        <h6 class="fonth6 mb-0">{{tagView?.tagName}}</h6>
+                                        <!-- <p class="fontp mb-0">TAG NAME</p> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-end align-items-center">
+                            <div>
+                                <button class="btn">
+                                    <img src="assets/icons8-delete-bin-48.png" class="img-fluid" (click)="delete(item)" width="30">
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between py-2 row bg-white px-3">
+                        <div class="d-flex align-items-center">
+                            <p class="mb-0 fontp">
+                                TAGGED PRODUCT LIST
+                            </p>
+                        </div>
+                        <div>
+                            <button class="btn text-white bgprimary btnbg " (click)="addmore()" data-toggle="modal" data-target="#mymodal">
+                                Add Products
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-0" >
+                    <div class="card border-0 shadow my-2 cardbdr" *ngFor="let item of tagpro">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-7 border-right bleft">
+                                    <div class="row ">
+                                        <div class="col-5 d-flex align-items-center justify-content-center">
+                                            <img  [src]="'/api/files/download/'+item?.productImage" alt="" class="img-fluid rounded-circle imgc"
+                                                width="50">
+                                        </div>
+                                        <div class="col-7    px-0 d-flex align-items-center ">
+                                            <div>
+                                                <h6 class="text-success font-weight-bold mb-0 fonth6">
+                                                    {{item?.productName}}</h6>
+                                                <p class="mb-0 fontp">{{item?.itemCode}}</p>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 my-2 my-lg-0">
+                                    <div class="h-100">
+                                        <div
+                                            class="d-flex justify-content-around align-items-center text-success h-100">
+                                            <h6 class="fonth6 mb-0">Amount</h6>
+                                            <h6 class="mb-0">{{item?.productPrice}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ngif popup1 ending -->
+        <!-- ngif popup2 starting -->
+        <div class="col-sm-5 h-100 overflow-auto d-flex " *ngIf="!tagpopup">
+            <div class="container text-center m-auto" @fadeout >
+                <form action="" (ngSubmit)="formRef.valid &&  addtag(formRef.value)" #formRef="ngForm">
+                    <div class="text-success mb-4">
+                        <h5 class="pt-2">CREATE NEW TAG</h5>
+                    </div>
+                    <div class="imgrounda m-auto">
+                        <img class="img-fluid d-block rounded-circle imgtag" [src]="imageUrl"
+                            (click)="openFileSelector()" >
+                        <input type="file" hidden #fileUpload (change)="fileSelected($event)" accept="image/*">
+                    </div>
+                    <div class="my-3">
+
+                        <div class="form-group">
+                            <input #nameField="ngModel" type="text" class="form-control border-0 shadow inpround "
+                                ngModel name="tagName" placeholder="Tag Name">
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="my-1">
+                            <button class="btn bgprimary btnbg text-white px-5" type="submit">ADD</button>
+                        </div>
+
+                    </div>
+                </form>
+                <div>
+                    <p class="mb-0 text-justify">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia explicabo cumque eos minus
+                        quos
+                        dolores illo, eligendi atque accusamus ipsum suscipit quaerat odit, necessitatibus eum laborum,
+                        nemo
+                        impedit ratione officiis?
+
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ngif popup 2 ending -->
+    </div>
+</div>
+<div>
+
+
+
+    <div class="modal " id="mymodal">
+        <div class="modal-dialog  modal-dialog-centered modal-xl modalscrollable">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header border-0 align-items-center">
+                    <div>
+                        <h6 class="mb-0">ADD MORE PRODUCTS</h6>
+                    </div>
+                    <div>
+                        <!-- <button type="button" class="close btn" (click)="addmore();" data-dismiss="modal">
+                        <!-- <img  [src]="'/api/files/download/'+tagpro?.productImage" alt="" class="img-fluid" width="40">
+                        </button> -->
+                        <button type="button" class="close btn" data-dismiss="modal">
+
+                            <img src="assets/close_btn.png" alt="" class="img-fluid" width="40">
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body pt-0">
+                    <div class="row">
+                        <div class="col-lg-6 bglight">
+                            <div class="pmodal">
+                                <div class="pdialog">
+                                    <div class="pcontent">
+                                        <div class="pmodalbody">
+                                            <div class="container-fluid px-0">
+                                                <div class="card border-0 shadow my-2 cardbdr" *ngFor="let item of modelallprd">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-9">
+                                                                <div class="row">
+                                                                    <div class="col-8 ">
+                                                                        <div class="row ">
+                                                                            <div
+                                                                                class="col-5 d-flex align-items-center">
+                                                                                <img  [src]="'/api/files/download/'+item?.productImage" alt=""
+                                                                                    class="img-fluid rounded-circle imgcircle"
+                                                                                    width="60">
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-7 px-0 d-flex align-items-center ">
+                                                                                <div>
+
+                                                                                    <h6
+                                                                                        class="text-success fonth6 mb-0">
+                                                                                        {{item.productName}} </h6>
+                                                                                    <p class="mb-0 fontp">
+                                                                                        {{item.itemCode}}</p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-4  d-flex justify-content-center align-items-center">
+                                                                        <div class="text-center text-success">
+                                                                            <h6 class="mb-0 fonth6">PRICE</h6>
+                                                                            <p class="mb-0 fontp">{{item.productPrice}}
+                                                                            </p>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="col-lg-3 d-flex align-items-center justify-content-center">
+
+
+                                                                <div class="">
+                                                                    <button class="btn bgprimary btnbg text-white px-4"
+                                                                        (click)="addProduct(item)">Add</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 bg-white">
+                            <div class="pmodal">
+                                <div class="pdialog">
+                                    <div class="pcontent">
+                                        <div class="pmodalbody">
+                                            <div class="container-fluid px-0">
+                                                <div class="card border-0 shadow my-2 cardbdr bglight"
+                                                    *ngFor="let item of tagpro">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-9">
+                                                                <div class="row">
+                                                                    <div class="col-8 ">
+                                                                        <div class="row ">
+                                                                            <div
+                                                                                class="col-5 d-flex align-items-center">
+                                                                                <img  [src]="'/api/files/download/'+item?.productImage" alt=""
+                                                                                    class="img-fluid rounded-circle imgcircle"
+                                                                                    width="60">
+                                                                            </div>
+                                                                            <div
+                                                                                class="col-7 px-0 d-flex align-items-center ">
+                                                                                <div>
+
+                                                                                    <h6
+                                                                                        class="text-success fonth6 mb-0">
+                                                                                        {{item.productName}}</h6>
+                                                                                    <p class="mb-0 fontp">
+                                                                                        {{item.itemCode}}</p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div
+                                                                        class="col-4  d-flex justify-content-center align-items-center">
+                                                                        <div class="text-center text-success">
+                                                                            <h6 class="mb-0 fonth6">PRICE</h6>
+                                                                            <p class="mb-0 fontp">{{item.productPrice}}
+                                                                            </p>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="col-lg-3 d-flex align-items-center justify-content-center">
+
+
+                                                                <div class="">
+                                                                    <button class="btn bgprimary btnbg text-white px-3"
+                                                                        (click)="remove(item)">Remove</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

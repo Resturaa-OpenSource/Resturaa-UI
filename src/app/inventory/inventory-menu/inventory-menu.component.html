@@ -1,0 +1,61 @@
+
+
+        <div class="conatiner-fluid">
+                <h5>Inventory</h5>
+                <div class=" bdr"></div>
+                <div class="row ptext py-2">
+                    <div class="col-4 p-1 " [ngStyle]="title === 'Order View' && {'background-color':'#a787bd'}">
+                            <a class="text-decoration-none" (click)="titleChange('Order View')"  [routerLink]="['/module/inventory/orderview']" routerLinkActive="router-link-active" >
+                        <div class="card border-0 shadow text-center bg-white ">
+                            <div class="card-body">
+                                <img src="../../../assets/menu/icons8-view-48.png" width="46px" alt="" class="img-fluid">
+                                <p>Order View</p>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="col-4 p-1" [ngStyle]="title === 'Store Transfer' && {'background-color':'#a787bd'}">
+                            <a class="text-decoration-none" (click)="titleChange('Store Transfer')"   [routerLink]="['/module/inventory/statetransfer']" routerLinkActive="router-link-active" >
+                        <div class="card border-0 shadow text-center bg-white ">
+                            <div class="card-body">
+                                <img src="../../../assets/menu/icons8-transfer-48.png" width="46px" alt="" class="img-fluid">
+                                <p>Store Transfer</p>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="col-4 p-1" [ngStyle]="title === 'Ingredients' && {'background-color':'#a787bd'}">
+                            <a class="text-decoration-none" (click)="titleChange('Ingredients')"  [routerLink]="['/module/inventory/ingredients']" routerLinkActive="router-link-active" >
+                        <div class="card border-0 shadow text-center bg-white ">
+                            <div class="card-body">
+                                <img src="../../../assets/menu/icons8-ingredients-48.png" width="46px" alt="" class="img-fluid">
+                                <p>Ingredients</p>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="col-4 p-1" [ngStyle]="title === 'Purchase Order' && {'background-color':'#a787bd'}">
+                            <a class="text-decoration-none" (click)="titleChange('Purchase Order')"  [routerLink]="['/module/inventory/purchaseorder']" routerLinkActive="router-link-active">
+                        <div class="card border-0 shadow text-center bg-white ">
+                            <div class="card-body">
+                                <img src="../../../assets/menu/icons8-purchase-order-96.png" width="46px" alt="" class="img-fluid">
+                                <p>Purchase Order Recieving</p>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    <div class="col-4 p-1" [ngStyle]="title === 'STORE KEEPING UNTIS' && {'background-color':'#a787bd'}">
+                            <a class="text-decoration-none" (click)="titleChange('STORE KEEPING UNTIS')"  [routerLink]="['/module/inventory/sku']" routerLinkActive="router-link-active" >
+                        <div class="card border-0 shadow text-center bg-white ">
+                            <div class="card-body">
+                                <img src="../../../assets/menu/icons8-unit-48.png" width="46px" alt="" class="img-fluid">
+                                <p>SKU</p>
+                            </div>
+                        </div>
+                        </a>
+                    </div> 
+                   
+                </div>
+            </div>      
+
+

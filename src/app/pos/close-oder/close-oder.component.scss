@@ -1,0 +1,90 @@
+.filebtn::-webkit-file-upload-button {
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+input[type="file"] {
+  cursor: pointer;
+  color: transparent;
+}
+input[type="file"]:focus {
+  outline: none;
+}
+.btn {
+  border-radius: 30px;
+}
+.filebtn::-webkit-file-upload-button:focus {
+  outline: none;
+  border-radius: 30px;
+}
+.main {
+  width: 150px;
+  height: 100px;
+  border-radius: 30px;
+  border-color: rgb(8, 8, 8);
+  background-color: rgb(212, 212, 212);
+}
+.div1 {
+  text-align: center;
+}
+.cardbody {
+  padding: 0.75rem;
+}
+.cardbdr {
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+.heightfill {
+  height: -webkit-fill-available;
+}
+
+.boxshadow {
+  -webkit-box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+}
+.tableres {
+  font-size: 0.6em;
+}
+.middlebox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.boxshadow {
+  width: 75%;
+  h1 {
+    font-size: 1.5em;
+    color: #222;
+  }
+  h2 {
+    font-size: 0.9em;
+  }
+  h3 {
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 2em;
+  }
+  p {
+    font-size: 0.7em;
+    color: #666;
+    line-height: 1.2em;
+  }
+}
+.px5 {
+  padding-left: 56px;
+  padding-right: 56px;
+}
+
+// input[type="file"]
+// {
+//   display: none;
+// }
+// .fileUpload input.upload
+// {
+//     display: inline-block;
+// }

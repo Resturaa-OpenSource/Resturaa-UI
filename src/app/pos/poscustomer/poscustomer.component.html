@@ -1,0 +1,181 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row pt-3 bglight">
+                        <div class="col-4 d-flex align-items-center">
+                            <h6>CUSTOMER LIST</h6>
+                        </div>
+                        <div class="col-8 ">
+                            <div class="">
+                                <form action="">
+                                    <div class="form-group">
+                                        <input type="search" class="form-control border-0 shadow inpround" name="search"
+                                            placeholder="Search" [(ngModel)]="searchText">
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-0">
+
+                    <div *ngIf="cust.length==0">
+                        <div class="py-3" *ngFor="let item of [1,2,3,4,5,6]">
+                            <ngx-content-loading [width]="" [height]="60">
+                                <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g>
+                                <svg:g ngx-rect width="300" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                                <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                                <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                            <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                            </ngx-content-loading>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow my-2 cardbdr" *ngFor="let item of cust | filter :searchText">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row ">
+                                        <div class="col-xl-4 col-lg-6 col-4 d-flex align-items-center justify-content-center">
+                                            <img [src]="'/api/files/download/'+item?.custImage" alt=""
+                                                class="img-fluid rounded-circle imgcircle" width="60">
+                                        </div>
+                                        <div class="col-xl-8 col-lg-6 col-8    px-0 d-flex align-items-center ">
+                                            <div>
+                                                <h6 class="text-success font-weight-bold mb-0 fonth6">{{item?.custName}}
+                                                </h6>
+                                                <p class="mb-0 fontp">{{item?.custPhone}}</p>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 my-2 my-lg-0 d-flex justify-content-lg-end justify-content-center align-items-center">
+                                    <div class="">
+                                        <button class="btn bgprimary btnbg text-white" (click)="viewDetils(item)">View
+                                            Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 pb-3 h-100 overflow-auto " *ngIf="toggle">
+            <div @fadeout>
+                <div class="pb-2 pt-4 sticky-top bg-white">
+                    <h6 class="text-center">NEW CUSTOMER REGISTRATION</h6>
+                </div>
+                <div class="">
+                    <div class="imground mx-auto">
+                        <img class="rounded-circle img-fluid mx-auto d-block custimg" [src]="imageUrl"
+                            (click)="openFileSelector()" width="120">
+                        <input type="file"  hidden #fileUpload (change)="fileSelected($event)" accept="image/*"  required>
+                    </div>
+                  
+                </div>
+                <div class="mt-3">
+                    <form action="" (ngSubmit)="formRef.valid &&  addcus(formRef.value)" #formRef="ngForm">
+                        <div class="form-group">
+                            <input #phoneField="ngModel" type="number"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="custPhone"
+                                placeholder="PHONE NUMBER" required>
+                        </div>
+                        <div style="color: red" *ngIf="(phoneField.touched || phoneField.dirty) && phoneField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input #nameField="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="custName"
+                                placeholder="NAME" required>
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input #address1Field="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="custAddress1"
+                                placeholder="ADDRESS1" required>
+                        </div>
+                        <div style="color: red" *ngIf="(address1Field.touched || address1Field.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input #ADDRESS2Field="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="custAddress2"
+                                placeholder="ADDRESS2" required>
+                        </div>
+                        <div style="color: red" *ngIf="(ADDRESS2Field.touched ||ADDRESS2Field.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input #PINCODEField="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="custPincode"
+                                placeholder="PINCODE" required>
+                        </div>
+                        <div style="color: red" *ngIf="(PINCODEField.touched || PINCODEField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="py-4 text-center">
+                            <button class="btn bgprimary btnbg text-white" type="submit">
+                                Save & Continue
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5 pb-3 h-100 overflow-auto " *ngIf="!toggle">
+            <div @fadeout>
+                    <div class="bg-primary text-center">
+                            <button class="mb-0 text-white text-center py-2 btn-block btn"
+                                (click)="toggle=!toggle" >ADD
+                                NEW CUSTOMER </button>
+                        </div>
+                <div class="pb-2 pt-4 sticky-top bg-white">
+                    <h6 class="text-center">VIEW DETAILS</h6>
+                </div>
+                <div>
+                    <div class="mt-3">
+                        <div class="imground mx-auto">
+                            <!-- <img [src]="'/api/files/download/'+staffview?.staffImage" alt=""
+                                                class="img-fluid w-100 rounded-circle" style="height:150px;width:150px;
+                                                object-fit: cover;"> -->
+                            <img [src]="'/api/files/download/'+cus?.custImage " alt=" " class="img-fluid  rounded-circle custimg">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between mt-4 mb-2">
+                        <div>
+
+                            <h6 class="mb-0 fontp">NAME:</h6>
+                            <h6 class=" font-weight-bold mb-0 ">{{cus?.custName}}</h6>
+
+                        </div>
+                        <!-- <div class="text-success text-right">
+                                            <h6 class="  mb-0 fonth6"> <small>USERNAME: </small> {{staffview?.staffUserName}}
+                                            </h6>
+                                            <h6 class="mb-0 fontp"> <small>JOINED ON:</small>
+                                                {{staffview?.staffjoinedDate |date : "dd.MM.y"}}</h6>
+                                        </div> -->
+                    </div>
+                    <div class="mt-3">
+                        <h6 class="mb-1 fontp">ADDRESS:</h6>
+                        <h6 class="mb-0 ">
+                            {{cus?.custAddress1}}<br>
+                            {{cus?.custAddress2}}
+                        </h6>
+                    </div>
+                    <div class="mt-3">
+                        <h6 class="mb-1 fonth6">PHONE NUMBER:</h6>
+                        <h6 class="mb-0 ">{{cus?.custPhone}}
+                        </h6>
+                    </div>
+                    <div class="mt-3">
+                        <h6 class="mb-1 fonth6">PINCODE:</h6>
+                        <h6 class="mb-0 ">{{cus?.custPincode}}</h6>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

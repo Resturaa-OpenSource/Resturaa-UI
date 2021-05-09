@@ -1,0 +1,14 @@
+.table thead th{
+    font-size: 13px;
+}
+.table td, .table th{
+    vertical-align: middle;
+}
+.inpbdr{
+    border: 1px solid #ccc;
+    padding-left: 1rem;
+    }
+    .inpbdr:focus{
+    outline: none;
+    
+    }

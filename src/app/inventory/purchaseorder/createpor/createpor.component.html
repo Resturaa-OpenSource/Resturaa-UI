@@ -1,0 +1,68 @@
+<div class="py-3">
+    <h6 class="mb-4">Purchase Order Receiving</h6>
+    <div class="mb-3 d-flex flex-wrap">
+        <div class="flex-fill d-flex align-items-center">
+            <div>
+                <div class="form-group mb-2">
+                    <label for="text">Purchase Order : &nbsp;</label>
+                    <input type="text" class="inpround inpbdr" [(ngModel)]="por.orederName">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="date">Date Selector&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;</label>
+                    <input type="date" class="inpround inpbdr bg-white" [(ngModel)]="por.date">
+                </div>
+                <div>
+                    <label for="text" >Total amount&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp; {{por.totalAmount}}</label>
+
+                </div>
+            </div>
+        </div>
+       
+        <div class="flex-fill d-flex justify-content-sm-end justify-content-center">
+            <div class="d-flex align-items-center">
+                <button class="btn bgprimary text-white btnbg" data-toggle="modal" data-target="#createpor">Add
+                    Item</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>CODE</th>
+                        <th>NAME</th>
+                        <th>SKU</th>
+                        <th>UNIT COST</th>
+                        <th>STORE IN QTY</th>
+                        <th>REQUIRED QTY</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td>{{item.code}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.sku}}</td>
+                        <td>{{item.unitPrice}}</td>
+                        <td>{{item.storeQty}}</td>
+                        <td>
+                            <div>
+                                <input type="number" class="inpround inpbdr" [(ngModel)]="item.requiredQty">
+                            </div>
+                        </td>
+                        <td><button class="btn btnbg bgprimary text-white" (click)="remove(item)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="w-100">
+                <button class=" w-100 btn btnbg bgprimary text-white" *ngIf="items.length>0"
+                    (click)="submit()">submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <app-createpormodal (myOutput)="view($event)"></app-createpormodal>
+</div>

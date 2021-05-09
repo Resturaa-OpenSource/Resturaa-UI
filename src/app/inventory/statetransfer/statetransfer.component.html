@@ -1,0 +1,222 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-6 bglight pb-3 h-100 overflow-auto">
+            <div @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row py-3 bglight">
+                        <div class="col-12 d-flex align-items-center">
+                            <h6 class="">INGREDIENT CONSUMPTION</h6>
+                        </div>
+                        <!-- <div class="col-8 ">
+                                    <div class="">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <input type="search" class="form-control border-0 shadow inpround" name="search"
+                                                    placeholder="search">
+                                            </div>
+        
+                                        </form>
+                                    </div>
+                                </div> -->
+                    </div>
+                </div>
+                <div class="container-fluid px-0">
+                    <div *ngIf="products.length==0">
+                        <div class="py-3" *ngFor="let item of [1,2,3,4,5,6]">
+                            <ngx-content-loading [width]="" [height]="60">
+                                <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g>
+                                <svg:g ngx-rect width="300" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                                <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                                <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g>
+                            </ngx-content-loading>
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow my-2 cardbdr" *ngFor="let item of products">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row ">
+                                        <div class="col-xl-5 col-lg-6 col-5 d-flex align-items-center justify-content-center">
+                                            <img [src]="'/api/files/download/'+item?.productImage" alt=""
+                                                class="img-fluid rounded-circle imgcircle" width="60">
+                                        </div>
+                                        <div class=" col-xl-7 col-lg-6 col-7  bleft px-0 d-flex align-items-center ">
+                                            <div>
+                                                <h6 class="text-success font-weight-bold mb-0 fonth6">
+                                                    {{item?.productName}}</h6>
+                                                <p class="mb-0 fontp">{{item?.itemcodePrefix}}{{item?.itemCode}}</p>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 my-2 my-lg-0  ">
+
+                                    <div class="row h-100">
+                                        <div class="col-6 d-flex justify-content-center align-items-center text-center">
+                                            <div class="text-success ">
+                                                <p class="mb-0 fontp ">PRICE</p>
+                                                <h6 class="text-success">{{item?.productPrice}}</h6>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="col-6 d-flex justify-content-lg-end justify-content-center align-items-center">
+                                            <button class="btn bgprimary btnbg text-white  px-4"
+                                                (click)="viewProduct(item)">View</button>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="d-flex justify-content-lg-end justify-content-center">
+                                                        <button class="btn bgprimary btnbg text-white">Select Customer</button>
+                                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 px-0 wholemodal">
+            <div class="wmodal" @fadeout>
+                <div class="modalscroll modaldialog" *ngIf="productView !=null">
+                    <div class="modalcontent">
+                        <!-- modalheader starting -->
+                        <div class="modalheader py-3 ">
+                            <div class="d-flex justify-content-between align-items-center px-3">
+                                <div>
+                                    <h6 class="mb-0 fonth6">{{productView?.productName}}</h6>
+                                    <p class="mb-0 fontp">{{productView?.prefix}}{{productView?.productID}}</p>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fonth6">Price</h6>
+                                    <h6 class="mb-0">{{productView?.productPrice}}</h6>
+                                </div>
+                            </div>
+                            <div class="pl-1">
+                                <div class=" d-flex flex-nowrap carddeck my-1">
+                                    <div class="card cardchild text-center bglight border-0  my-2 mx-1 cpointer"
+                                        *ngFor="let v of productView?.variants">
+                                        <div class="card-body py-4" (click)="clickOnVar(v)">
+                                            <h6 class="mb-0 fontp">{{v.name}}</h6>
+                                            <h6 class="text-primary mb-0"> {{v.price}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between px-3 py-2">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-0 fontp">ADD INGREDIENTS HERE
+                                        <!-- <span class="fontp font-weight-bold">{{ingreMapping?.varientName}}</span></p> -->
+                                </div>
+                                <div>
+                                    <button class="btn bgprimary btnbg px-4 text-white" data-toggle="modal" data-target="#createpora">
+                                        ADD
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modal body starting-->
+                        <div class="modalbody">
+                            <div class="h-100 px-2">
+                                <!-- ngx-content-loading -->
+                                <!-- <div>
+                                    <div class="card border-0 shadow my-2 cardrd" *ngFor="let item of [1,2,3,4,5,6]">
+                                        <div class="card-body">
+                                                <div class="row" >
+                                                        <div class=" w-25 m-auto">
+                                                            <ngx-content-loading [width]="" [height]="100">
+                                                                <svg:g ngx-rect width="300" height="100" y="40" x="70" rx="5" ry="5">
+                                                                </svg:g>
+                                                            </ngx-content-loading>
+                                                        </div>
+                                                        <div class=" w-25 m-auto">
+                                                            <ngx-content-loading [width]="" [height]="100">
+                                                                <svg:g ngx-rect width="300" height="100" y="40" x="70" rx="5" ry="5">
+                                                               </svg:g>
+                                                            </ngx-content-loading>
+                                                        </div>
+                                                        <div class=" w-25 m-auto">
+                                                            <ngx-content-loading [width]="" [height]="100">
+                                                                <svg:g ngx-rect width="300" height="100" y="40" x="70" rx="5" ry="5">
+                                                                </svg:g>
+                                                           </ngx-content-loading>
+                                                        </div>
+                                                        <div class=" w-25 m-auto">
+                                                            <ngx-content-loading [width]="" [height]="100">
+                                                               <svg:g ngx-rect width="300" height="100" y="40" x="70" rx="5" ry="5">
+                                                                </svg:g>
+                                                           </ngx-content-loading>
+                                                        </div>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                
+                            </div> -->
+                                <!-- ngx-content-loading ending -->
+                                <div class="card border-0 bglight my-2" *ngFor="let item of ingreMapping">
+                                    <div class="card-body py-2">
+                                        <div class="row">
+                                            <div class="col-xl-6 py-xl-0 py-2 px-lg-1">
+                                                <div class="row h-100">
+                                                    <div class="col-3 px-1 diflex">
+                                                        <h6 class="mb-0 fontp">{{item?.ingrediantID}}</h6>
+                                                    </div>
+                                                    <div class="col-4 px-1 diflex">
+                                                        <h6 class="mb-0 fontp">{{item?.ingrediantName}}</h6>
+                                                    </div>
+                                                    <div class="col-5 px-1 diflex">
+                                                        <h6 class="mb-0 fontp">{{item?.productName}} <br>
+                                                            {{item?.varientName}}
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 py-xl-0 py-2 px-lg-1">
+                                                <div class="row">
+                                                    <div class="col-9 px-1 diflex">
+                                                       
+                                                            <div class="">
+                                                                <input type="text" [(ngModel)]="item.value"
+                                                                    class="inpround inpbdr"
+                                                                    placeholder="value in grams">
+                                                            </div>
+                                                       
+                                                    </div>
+                                                    <div class="col-3 px-1 diflex">
+                                                        <button class="btn px-0" (click)="remove(item)">
+                                                            <div class="rounddiv bg-white d-flex">
+                                                                <img src="assets/icons8-multiply-36.png" alt=""
+                                                                    class="img-fluid m-auto" width="26">
+                                                            </div>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- modalbody ending -->
+                        <!-- modal-footer starting -->
+                        <div class="modalfooter">
+                            <div class="bgight p-3 d-flex justify-content-end">
+                                <button class="btn bgprimary btnbg text-white px-4" (click)="update()">Update</button>
+                            </div>
+                        </div>
+                        <!-- modal-footer ending -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <app-storetranfer-model  (myOutput)="arrayValue($event)"></app-storetranfer-model>
+    </div>
+</div>
+
+

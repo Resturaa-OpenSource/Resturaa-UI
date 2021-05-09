@@ -1,0 +1,206 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-sm-7 bglight pb-3 h-100 overflow-auto">
+            <div class="" @fade>
+                <div class="container-fluid px-0 sticky-top ">
+                    <div class="row pt-3 bglight">
+                        <div class="col-4 d-flex align-items-center">
+                            <h6>CUSTOMER LIST</h6>
+                        </div>
+                        <div class="col-8 ">
+                            <div class="">
+                                <div>
+                                    <div class="form-group">
+                                        <input type="search" class="form-control border-0 shadow inpround"
+                                            [(ngModel)]="searchText" placeholder="Search">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid px-0">
+                        <div *ngIf="cust.length==0">
+                                <div class="py-3" *ngFor="let item of [1,2,3,4,5,6]">
+                                    <ngx-content-loading [width]="" [height]="60">
+                                        <svg:g ngx-circle cy="30" cx="30" r="30" ry="5"></svg:g>
+                                        <svg:g ngx-rect width="300" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                                        <svg:g ngx-rect width="240" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                                        <!-- <svg:g ngx-rect width="210" height="10" y="70" x="0" rx="5" ry="5"></svg:g>
+                                            <svg:g ngx-rect width="240" height="10" y="100" x="0" rx="5" ry="5"></svg:g> -->
+                                    </ngx-content-loading>
+                                </div>
+                            </div>
+                    <div class="card border-0 shadow my-2 cardbdr" *ngFor="let item of cust | filter :searchText">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row ">
+                                        <div class="col-xl-4 col-lg-6 col-4 d-flex align-items-center justify-content-center">
+                                            <img [src]="'/api/files/download/'+item?.custImage" alt=""
+                                                class="img-fluid rounded-circle imgcircle" width="60">
+                                        </div>
+                                        <div class=" col-xl-8 col-lg-6 col-8    px-0 d-flex align-items-center ">
+                                            <div>
+                                                <h6 class="text-success font-weight-bold mb-0 fonth6">{{item?.custName}}</h6>
+                                                <p class="mb-0 fontp">{{item?.custPhone}}</p>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 my-2 my-lg-0 ">
+                                    <div class="d-flex justify-content-lg-end justify-content-center align-items-center h-100">
+                                        <button class="btn bgprimary btnbg text-white"
+                                            (click)="selectCustomer(item);">Select Customer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- ngif div starting for table booking -->
+        <div class="col-sm-5  h-100 overflow-auto d-flex overx"
+            *ngIf="showform">
+            <div @fadeout class="px-3 overx m-auto">
+                <h5 class="text-center pt-3">Customer Details</h5>
+                <div class="row my-4 ">
+                    <div class="col-1 d-flex align-items-center justify-content-center">
+
+                    </div>
+                    <div class="col-11    px-0 d-flex align-items-center ">
+                        <div>
+                            <h6 class="text-success font-weight-bold mb-0 fonth6">{{res?.custName}}</h6>
+                            <p class="mb-0 fontp">{{res?.custPhone}}</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <form action="" (ngSubmit)="formRef.valid &&  addres(formRef.value)" #formRef="ngForm">
+                        <input type="text" hidden ngModel name="reservationId">
+                        <input type="text" hidden ngModel name="storeId">
+                        <input type="text" hidden ngModel name="orderId">
+                        <div class="form-group">
+                            <input #nameField="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="custPhone"
+                                placeholder="Phone Number">
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input #nameField="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="custName"
+                                placeholder="Name">
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input type="date" class="form-control inpround border-0 shadow bglight" name="startTime"
+                                ngModel placeholder="Date">
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <div class="row">
+
+                                <div class="min-time-example col-6">
+                                    <input type="text" placeholder="Start time" [ngxTimepicker]="min" [format]="24"
+                                        [(ngModel)]="startTime" readonly name="endTime"
+                                        class="form-control inpround border-0 shadow bglight">
+                                    <ngx-material-timepicker #min></ngx-material-timepicker>
+                                </div>
+                                <div style="color: red"
+                                    *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                                    This field is required</div>
+
+                                <div class="max-time-example col-6">
+                                    <input type="text" placeholder="End Time" name="startTime"
+                                        class="form-control inpround border-0 shadow bglight" readonly
+                                        [ngxTimepicker]="max" [(ngModel)]="endTime" name="endTime" [min]="startTime"
+                                        [format]="24">
+                                    <ngx-material-timepicker [defaultTime]="startTime" #max>
+                                    </ngx-material-timepicker>
+                                </div>
+
+                                <div style="color: red"
+                                    *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                                    This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input #nameField="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="specialRequest"
+                                placeholder="Special Request">
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input #nameField="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="occasion"
+                                placeholder="Special Occasion">
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group">
+                            <input #nameField="ngModel" type="text"
+                                class="form-control inpround border-0 shadow bglight" ngModel name="reserved"
+                                placeholder="Reservation For">
+                        </div>
+                        <div style="color: red" *ngIf="(nameField.touched || nameField.dirty) && nameField.invalid">
+                            This field is required</div>
+                        <div class="form-group ">
+                            <div class="d-flex justify-content-around pt-4">
+                                <div class="">
+                                    <button class="btn bgprimary text-white btnbg px-xl-5 px-4 mx-auto"
+                                        [routerLink]="['/module/pos/']"
+                                        routerLinkActive="router-link-active">cancel</button>
+                                </div>
+                                <div class="">
+                                    <button class="btn bgprimary text-white btnbg px-xl-5 px-3 mx-auto"
+                                        type="submit">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <!-- ngif div ending for table booking -->
+        <!-- ngif div starting for guest signup-->
+        <div class="col-sm-5 px-4 d-flex justify-content-center align-items-center h-100 overflow-auto overx"
+            *ngIf="!showform">
+            <div class="" @fadeout>
+                <div class="pt-5">
+                    <div class="text-center py-4">
+                        <h6>REGISTER AS A GUEST</h6>
+                    </div>
+                    <div>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="tel" class="form-control inpround border-0 bglight shadow"
+                                    placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control inpround border-0 shadow bglight"
+                                    placeholder="Pincode">
+                            </div>
+                            <div class="form-group d-flex justify-content-center pt-3">
+                                <button class="btn btnbg bgprimary text-white px-5" type="submit">Submit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- ngif div ending for guest signup-->
+    </div>
+</div>

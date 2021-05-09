@@ -1,0 +1,71 @@
+.imgroundb{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    overflow: hidden;
+}
+.imground{
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    // border: 2px solid #ccc;
+}
+.custround{
+    width: 160px;
+    height: 160px;
+}
+.cardbdr{
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    
+}
+.nav-pills .nav-link.active{
+    background-color: #f9f9f9 !important;
+}
+.cardbody{
+    padding: 0.75rem;
+}
+.btnround{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(241, 225, 225);
+  }
+  .pop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    overflow-y: auto;
+ 
+}
+.bgtlight{
+    background-color: rgba(0,0,0,.5);
+}
+.fonth6{
+    font-size: 10px;
+}
+.productcard{
+    height: auto;
+}
+@media(min-width:777px){
+    .productcard{
+        height: 190px;
+    }
+}
+@media(min-width:1025px){
+    .productcard{
+        height: auto;
+    }
+}
+.cardbody{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+            align-items: flex-end;
+}

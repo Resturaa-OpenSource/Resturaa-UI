@@ -1,0 +1,6 @@
+<div class="loader" *ngIf="show">
+    <lottie-animation-view
+    [options]="lottieConfig" [width]="300"  (animCreated)="handleAnimation($event)">
+   </lottie-animation-view>
+   <h6><b style="color: black;" >Loading....</b></h6>
+</div>

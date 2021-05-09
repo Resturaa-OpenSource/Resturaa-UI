@@ -1,0 +1,172 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+
+        <div class="col-sm-5 h-100 overflow-auto pb-3 pt-2 w-100 d-flex align-items-center">
+            <div @fadeout class="boxshadow p-3 m-auto">
+                <div class="text-center pb-1">
+                    <div class="m-auto imgcircle">
+                        <img [src]="croppedImage" alt="" class="rounded-circle img-fluid w-100" width="60" height="60">
+                    </div>
+                    <h2 class="my-3">COMPANY NAME</h2>
+                    <hr>
+                </div>
+
+                <div>
+                    <h2>CONTACT INFO:</h2>
+                    <div>
+                        <p class="mb-0"><span class="font-weight-bold">Address :</span> {{store.storeAddress1}},
+                            {{store.storeAddress2}}
+                        </p>
+                        <p class="mb-0"><span class="font-weight-bold">Email :</span> {{store.email}}</p>
+                        <!-- <p class="mb-0"><span class="font-weight-bold">Phone :</span> {{store.}}</p> -->
+                    </div>
+                </div>
+                <div class="table-responsive my-3 w-100">
+                    <table class="table tableres">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>ItemName</th>
+                                <th>ItemCode</th>
+                                <th>Qty</th>
+                                <th>Sub Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let item of order.products">
+                                <td>{{item.productName}}</td>
+                                <td>{{item.itemCode}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.quantity*item.price}}</td>
+                            </tr>
+
+                        </tbody>
+                        <thead class="thead-light">
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>service</th>
+                                <th>{{service}}</th>
+
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>offer</th>
+                                <th>{{offer}}</th>
+
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>discount</th>
+                                <th>{{discount}}</th>
+
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Total</th>
+                                <th>{{order.grandTotal}}</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+
+                <div>
+                    <p class="fonth6 mb-0">
+                        <strong>Thank you for your bussiness!</strong>
+                    </p>
+                    <p class="mb-0 fonth6">
+                        {{message}}
+                    </p>
+                </div>
+                <hr class="mb-0 mt-2">
+            </div>
+
+        </div>
+
+        <div class="col-sm-7 bglight py-3 h-100 overflow-auto d-flex align-items-center justify-content-center">
+            <div @fade class="w-100">
+                <div class="mt-4">
+                    <div>
+                        <div class="form-group">
+                            <div class="d-flex align-items-center justify-content-center ">
+                                <input type="number" class="filebtn  py-2 pl-2  border-0 shadow inpround"
+                                    style="border-radius:25%;" [(ngModel)]="discount" placeholder="Discount" />
+
+                            </div>
+                        </div>
+                        <div class="align-item-center justify-content-center">
+                            <p class="div1">Total Amount </p>
+                            <h3 class="div1">{{order.grandTotal-discount}}</h3>
+                        </div>
+
+
+
+                        <div class="container-fluid px-0">
+                            <div class="row">
+                                <div class=" col-lg-4 col-md-6  px-2 col-6">
+                                    <div class="card border-0 shadow text-center cardbdr my-2"
+                                        [ngStyle]="order.paymentMode === 'CASH' && {'background-color':'#a1f990'}"
+                                        (click)="selected('CASH');">
+                                        <div class="card-body px-1">
+                                            <h6 class=" mb-0 fonth6">CASH</h6>
+                                            <h6 class=""></h6>
+                                            <p class="mb-0 fonth6"></p>
+                                            <h6 class="mb-0 fonth6"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" col-lg-4 col-md-6  px-2 col-6">
+                                    <div class="card border-0 shadow text-center cardbdr my-2"
+                                        [ngStyle]="order.paymentMode === 'PAYMENTLINK' && {'background-color':'#a1f990'}"
+                                        (click)="selected('PAYMENTLINK');">
+                                        <div class="card-body px-1">
+                                            <h6 class=" mb-0 fonth6">PAYMENT LINK</h6>
+                                            <h6 class=""></h6>
+                                            <!-- <p class="mb-0 fonth6">Seats Available</p> -->
+                                            <h6 class="mb-0 fonth6"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class=" col-lg-4 col-md-6  px-2 col-6">
+                                    <div class="card border-0 shadow text-center cardbdr my-2"
+                                        [ngStyle]="order.paymentMode === 'CARD' && {'background-color':'#a1f990'}"
+                                        (click)="selected('CARD');">
+                                        <div class="card-body px-1">
+                                            <h6 class=" mb-0 fonth6">CARD</h6>
+                                            <h6 class=""></h6>
+                                            <!-- <p class="mb-0 fonth6">Seats Available</p> -->
+                                            <h6 class="mb-0 fonth6"></h6>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-5  justify-content-center">
+                            <div class="d-flex align-items-center justify-content-center ">
+                                <input type="text" class="filebtn  py-2 pl-2  border-0 shadow inpround"
+                                    style="border-radius:25%;" placeholder="Staff Username"
+                                    [(ngModel)]="order.staffUsername" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center mt-5  justify-content-center">
+                            <button type="submit" class="btn bgprimary btnbg px-5 text-white"
+                                (click)="checkUser()">submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

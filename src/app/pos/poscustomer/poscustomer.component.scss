@@ -1,0 +1,22 @@
+.cardbdr {
+  border-radius: 10px;
+}
+.inpround {
+  border-radius: 30px;
+}
+.bglight {
+  background-color: #f9f9f9;
+}
+.imground {
+  border-radius: 50%;
+  width: 124px;
+  height: 124px;
+  border: 2px solid #ccc;
+  overflow: hidden;
+}
+.custimg {
+  width: 120px;
+  height: 120px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}

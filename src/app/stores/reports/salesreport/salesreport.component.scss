@@ -1,0 +1,17 @@
+.report {
+  .nav-pills .nav-link {
+    background-color: #fff;
+    color: #000;
+    border: 0.05px solid rgb(248, 248, 248);
+    border-radius: 0;
+  }
+  .nav-pills .nav-link.active {
+    color: #000;
+    background-color: #f9f9f9;
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+}
+.bglight {
+  background-color: #f9f9f9;
+}
