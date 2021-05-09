@@ -1,27 +1,37 @@
-# Restura
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
+> 
+> I would like to Improve the complete functionality, if anyone is interested please send a mail to rinturajc@gmail.com.
 
-## Development server
+# Restura - UI
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**About Restura**
 
-## Code scaffolding
+  RESTURA is a restaurant management system designed to assist you in building, maintaining and growing your business while consistently offering remarkable experiences to your valuable customers.
+  RESTURA can do the same for your food and beverages business, regardless of its size. It can also help improve profits and maximizing control by providing accurate accounting and payroll system.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  The software adapts to specific needs of variety of F&B businesses, small or big, individual or chain. RESTURA is the fastest in implementation and it’s easy on training too.
 
-## Build
+**We believe in Smart solution for smarter people**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    
+ - **Smoother Restaurant Operation**
+     > We help you streamline business operations and achieve targets of your dreams.
 
-## Running unit tests
+ - **User Friendly Order Management**
+     >RESTURA is easy for users and management to use. It is possible to transfer tickets quickly, split checks, change item prices, manage tables, keep track of reservations, and etc.
+ - **Attractive Dynamic Menu**
+     >Change is Beautiful, even for your menu. Our dynamic Menu is self explanatory and attractive.
+ - **Easy Army Management**
+     >Enhance efficiency with our centralised labour and inventory management.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Easy Notifications**
+It is essential to keep a track of your business at all points of time, even when away. Let travel not be a reason for you to receive delayed reports of how well your restaurant fared on that particular day.
 
-## Running end-to-end tests
+**Fully Responsive**
+We made this fully responsive so that every device can get an access.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+**Editable Layout**
+It is possible to edit the layout easily based on your requirements.
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
